@@ -1,0 +1,56 @@
+ <nav class="og-nav" [class.is-open]="menuOpen">
+    <div class="nav-inner">
+        <a class="brand" routerLink="/" (click)="closeAll()">
+            <!-- <i class="fa-solid fa-leaf"></i> -->
+             🌾
+            <span>Farmer-Connect</span>
+        </a>
+
+        <button class="menu-toggle" (click)="toggleMenu()" aria-label="Toggle navigation">
+            <i class="fa-solid" [ngClass]="menuOpen ? 'fa-xmark' : 'fa-bars'"></i>
+        </button>
+
+        <ul class="links" [class.show]="menuOpen">
+
+            <li>
+                <a routerLink="/aboutus" (click)="closeAll()">
+                    <i class="fa-solid fa-circle-info"></i> About Us
+                </a>
+            </li>
+
+            <li>
+                <a routerLink="/account" (click)="closeAll()">
+                    <i class="fa-solid fa-user-circle"></i> Account
+                </a>
+            </li>
+
+            <!-- ✅ PURCHASE BID -->
+            <li>
+                <a routerLink="/bids/purchase" (click)="closeAll()">
+                    <i class="fa-solid fa-cart-shopping"></i> Purchase Bid
+                </a>
+            </li>
+
+            <!-- ✅ VIEW BID -->
+            <li>
+                <a routerLink="/bids/view" (click)="closeAll()">
+                    <i class="fa-solid fa-gavel"></i> View Bid
+                </a>
+            </li>
+
+            <!-- ✅ WEST COLLECTING -->
+            <li>
+                <a routerLink="/west/collecting" (click)="closeAll()">
+                    <i class="fa-solid fa-recycle"></i> West Collecting
+                </a>
+            </li>
+
+            <li>
+                <a routerLink="/history" (click)="closeAll()">
+                    <i class="fa-solid fa-clock-rotate-left"></i> History
+                </a>
+            </li>
+
+        </ul>
+    </div>
+</nav>

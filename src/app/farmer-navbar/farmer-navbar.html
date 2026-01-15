@@ -1,0 +1,143 @@
+<!-- <nav class="og-nav" [class.is-open]="menuOpen">
+    <div class="nav-inner">
+        <a class="brand" routerLink="/" (click)="closeAll()">
+            <i class="fa-solid fa-leaf"></i>
+            <span>Farmer-Connect</span>
+        </a>
+
+    
+        <button class="menu-toggle" (click)="toggleMenu()" aria-label="Toggle navigation">
+            <i class="fa-solid" [ngClass]="menuOpen ? 'fa-xmark' : 'fa-bars'"></i>
+        </button>
+
+        <ul class="links" [class.show]="menuOpen">
+            <li>
+                <a routerLink="/about" (click)="closeAll()">
+                    <i class="fa-solid fa-circle-info"></i> About Us
+                </a>
+            </li>
+
+            <li>
+                <a routerLink="/account" (click)="closeAll()">
+                    <i class="fa-solid fa-user-circle"></i> Account
+                </a>
+            </li>
+
+            <li class="dropdown" [class.open]="openDropdown === 'bidding'">
+                <button (click)="toggleDropdown('bidding')">
+                    <i class="fa-solid fa-gavel"></i> Bidding
+                    <i class="fa-solid fa-chevron-down caret"></i>
+                </button>
+                <ul class="dropdown-menu">
+                    <li><a routerLink="/bids/view" (click)="closeAll()">View Bid</a></li>
+                    <li><a routerLink="/bids/add" (click)="closeAll()">Add Bid</a></li>
+                </ul>
+            </li>
+
+            <li>
+                <a routerLink="/history" (click)="closeAll()">
+                    <i class="fa-solid fa-clock-rotate-left"></i> History
+                </a>
+            </li>
+
+            <li class="dropdown" [class.open]="openDropdown === 'junction'">
+                <button (click)="toggleDropdown('junction')">
+                    <i class="fa-solid fa-tractor"></i> Junction
+                    <i class="fa-solid fa-chevron-down caret"></i>
+                </button>
+                <ul class="dropdown-menu">
+                    <li><a routerLink="/junction/add-equipment" (click)="closeAll()">Add Equipment</a></li>
+                    <li><a routerLink="/junction/rent-equipment" (click)="closeAll()">Rent Equipment</a></li>
+                </ul>
+            </li>
+
+            <li>
+                <a routerLink="/management" (click)="closeAll()">
+                    <i class="fa-solid fa-sitemap"></i> Management
+                </a>
+            </li>
+        </ul>
+    </div>
+</nav>
+
+
+  -->
+
+
+<nav class="og-nav" [class.is-open]="menuOpen">
+    <div class="nav-inner">
+        <a class="brand" routerLink="/" (click)="closeAll()">
+            <!-- <i class="fa-solid fa-leaf"></i> -->
+             🌾
+            <span>Farmer-Connect</span>
+        </a>
+
+        <button class="menu-toggle" (click)="toggleMenu()" aria-label="Toggle navigation">
+            <i class="fa-solid" [ngClass]="menuOpen ? 'fa-xmark' : 'fa-bars'"></i>
+        </button>
+
+        <ul class="links" [class.show]="menuOpen">
+            <li>
+                <a routerLink="/about" (click)="closeAll()">
+                    <i class="fa-solid fa-circle-info"></i> About Us
+                </a>
+            </li>
+
+            <li>
+                <a routerLink="/account" (click)="closeAll()">
+                    <i class="fa-solid fa-user-circle"></i> Account
+                </a>
+            </li>
+
+            <li class="dropdown" [class.open]="openDropdown === 'bidding'">
+                <button (click)="toggleDropdown('bidding')">
+                    <i class="fa-solid fa-gavel"></i> Bidding
+                    <i class="fa-solid fa-chevron-down caret"></i>
+                </button>
+                <ul class="dropdown-menu">
+                    <li><a routerLink="/bids/view" (click)="closeAll()">View Bid</a></li>
+                    <li><a routerLink="/bids/add" (click)="closeAll()">Add Bid</a></li>
+                </ul>
+            </li>
+
+            <!-- <li>
+                <a routerLink="/history" (click)="closeAll()">
+                    <i class="fa-solid fa-clock-rotate-left"></i> History
+                </a>
+            </li> -->
+
+            <li class="dropdown" [class.open]="openDropdown === 'junction'">
+                <button (click)="toggleDropdown('junction')">
+                    <i class="fa-solid fa-tractor"></i> Junction
+                    <i class="fa-solid fa-chevron-down caret"></i>
+                </button>
+                <ul class="dropdown-menu">
+                    <li><a routerLink="/junction/add-equipment" (click)="closeAll()">Add Equipment</a></li>
+                    <li><a routerLink="/junction/rent-equipment" (click)="closeAll()">Rent Equipment</a></li>
+                </ul>
+            </li>
+
+            <!-- ✅ MANAGEMENT DROPDOWN ADDED -->
+            <li class="dropdown" [class.open]="openDropdown === 'management'">
+                <button (click)="toggleDropdown('management')">
+                    <i class="fa-solid fa-sitemap"></i> Management
+                    <i class="fa-solid fa-chevron-down caret"></i>
+                </button>
+                <ul class="dropdown-menu">
+                    <li><a routerLink="/management/view-request" (click)="closeAll()">View Request</a></li>
+                    <li><a routerLink="/management/add-west" (click)="closeAll()">Add West</a></li>
+                </ul>
+            </li>
+
+            <li>
+                <a routerLink="/history" (click)="closeAll()">
+                    <i class="fa-solid fa-clock-rotate-left"></i> History
+                </a>
+            </li>
+        </ul>
+
+    </div>
+</nav>
+
+
+ 

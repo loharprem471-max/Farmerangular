@@ -1,0 +1,18 @@
+<button (click)="displaydata()">click</button>
+   
+ @for ( f of farmer; track f.id) 
+{
+       <div  class="card" style="width: 400px; padding: 16px; margin-bottom: 10px;">
+
+    <div>Username: {{ f.username }}</div>
+  <div>Email: {{ f.email }}</div>
+  <div>Phone: {{ f.phoneno }}</div>
+  <div>Address: {{ f.address }}, {{ f.city }}, {{ f.state }}</div>
+  <div>Status: {{ f.status }}</div>
+  <div>Date: {{ f.datetime }}</div>
+
+  <!-- <img *ngIf="f.farmerImg" [src]="f.farmerImg" width="100"> -->
+  <img *ngIf="f.farmerAdhar" [src]="f.farmerAdhar" width="100">
+  </div>
+
+}

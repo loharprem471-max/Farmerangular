@@ -1,0 +1,89 @@
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
+  integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw=="
+  crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+<div class="login-page">
+
+  <div class="login-box">
+
+    <!-- Avatar -->
+    <div class="avatar">
+      <img src="assets\logo.jpeg" alt="Farmer">
+    </div>
+
+    <h2>Login</h2>
+    <p class="subtitle">Access your bidding dashboard</p>
+
+    <!-- Template-driven form -->
+    <form #loginForm="ngForm" (ngSubmit)="login(loginForm)" novalidate>
+
+      <!-- Username -->
+      <div class="form-floating icon-input mb-3">
+        <i class="fa-solid fa-user"></i>
+        <input type="text" class="form-control" id="Username" name="Username" placeholder="Username"
+          [(ngModel)]="username" #Username="ngModel" required minlength="3">
+        <label for="Username">Enter Username</label>
+
+        <!-- Username validation -->
+        <small class="text-danger" *ngIf="Username.invalid && Username.touched">
+          <span *ngIf="Username.errors?.['required']">Username is required.</span>
+          <span *ngIf="Username.errors?.['minlength']">Username must be at least 3 characters.</span>
+        </small>
+      </div>
+
+      <!-- Password -->
+      <div class="form-floating icon-input mb-3">
+        <i class="fa-solid fa-lock"></i>
+        <input type="password" class="form-control" id="password" name="password" placeholder="Password"
+          [(ngModel)]="password" #Password="ngModel" required minlength="6">
+        <label for="password">Password</label>
+
+        <!-- Password validation -->
+        <small class="text-danger" *ngIf="Password.invalid && Password.touched">
+          <span *ngIf="Password.errors?.['required']">Password is required.</span>
+          <span *ngIf="Password.errors?.['minlength']">Password must be at least 6 characters.</span>
+        </small>
+      </div>
+
+      <!-- Wrong credentials message -->
+      <div *ngIf="loginError" class="text-danger mb-2">
+        {{ loginError }}
+      </div>
+      <!-- Role selection -->
+      <div class="role-selection mb-3 text-center">
+        <label class="form-label d-block mb-2">Select Role:</label>
+
+        <!-- Farmer -->
+        <div class="form-check form-check-inline role-farmer">
+          <input class="form-check-input" type="radio" name="role" id="farmer" value="farmer" [(ngModel)]="role"
+            required>
+          <label class="form-check-label" for="farmer">
+            <i class="fa-solid fa-tractor me-1"></i> Farmer
+          </label>
+        </div>
+
+        <!-- Customer -->
+        <div class="form-check form-check-inline role-customer">
+          <input class="form-check-input" type="radio" name="role" id="customer" value="customer" [(ngModel)]="role">
+          <label class="form-check-label" for="customer">
+            <i class="fa-solid fa-user me-1"></i> Customer
+          </label>
+        </div>
+
+        <small class="text-danger d-block mt-2" *ngIf="!role">
+          Please select a role.
+        </small>
+      </div>
+
+
+      <!-- Submit button -->
+      <button type="submit" class="btn btn-login w-100" [disabled]="loginForm.invalid">
+        Login
+      </button>
+
+    </form>
+
+    <br>
+    <a routerLink="#">Forgot Password?</a>
+  </div>
+</div>

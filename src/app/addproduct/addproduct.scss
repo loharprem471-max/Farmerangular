@@ -1,0 +1,110 @@
+body {
+  background: #f1f8e9;
+  min-height: 100vh;
+}
+
+.card {
+  border-radius: 16px;
+}
+
+.form-title {
+  color: #2e7d32;
+  font-weight: 700;
+}
+
+.input-title {
+  font-size: 13px;
+  font-weight: 600;
+  color: #2e7d32;
+  margin-bottom: 4px;
+}
+
+.icon-input {
+  position: relative;
+}
+
+.icon-input i {
+  position: absolute;
+  left: 15px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #2e7d32;
+  z-index: 10;
+}
+
+.icon-input .form-control,
+.icon-input .form-select {
+  padding-left: 45px;
+}
+
+.icon-input label {
+  padding-left: 45px;
+}
+
+
+
+
+.col-lg-7 {
+background-color: white;
+border-radius: 10px;
+}
+
+
+.btn-green {
+  background: #14851f;
+  color: white;
+  padding: 12px;
+  font-size: 17px;
+  border-radius: 10px;
+  margin-bottom: 25px;
+}
+
+.btn-green:hover {
+  background: #2e7d32;
+}
+.upload-container {
+  max-width: 550px;
+  margin: auto;
+}
+
+.upload-box {
+  min-height: 260px;
+  border: 2px dashed #6c63ff;
+  border-radius: 16px;
+  background: #f9faff;
+  padding: 14px;
+
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* IMAGE GRID */
+.preview-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(90px, 1fr));
+  gap: 10px;
+  width: 100%;
+}
+
+/* SMALL IMAGES */
+.preview-grid img {
+  width: 100%;
+  height: 80px;
+  object-fit: cover;
+  border-radius: 10px;
+  border: 1px solid #ddd;
+}
+
+/* PLACEHOLDER */
+.placeholder {
+  text-align: center;
+  color: #666;
+}
+
+.placeholder i {
+  font-size: 40px;
+  color: #6c63ff;
+  margin-bottom: 10px;
+}

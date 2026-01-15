@@ -1,0 +1,46 @@
+<div class="layout">
+
+    <!-- LEFT SIDEBAR -->
+    <aside class="sidebar" [class.closed]="isSidebarClosed">
+        <div class="sidebar-header">
+            <i class="fa-solid fa-leaf"></i>
+            <span>Farmer-Connect</span>
+        </div>
+
+        <nav class="sidebar-menu">
+            <a routerLink="/admin/viewfarmers" (click)="closeSidebar()">
+                <i class="fa-solid fa-wheat-awn"></i> Farmers
+            </a>
+            <a routerLink="/admin/viewcustomer" (click)="closeSidebar()">
+                <i class="fa-solid fa-users"></i> Customers
+            </a>
+            <a routerLink="/admin/products" (click)="closeSidebar()">
+                <i class="fa-solid fa-box-open"></i> Products
+            </a>
+            <a routerLink="/admin/requests" (click)="closeSidebar()">
+                <i class="fa-solid fa-file-invoice-dollar"></i> Requests
+            </a>
+            <a routerLink="/admin/new-users" (click)="closeSidebar()">
+                <i class="fa-solid fa-user-plus"></i> New Users
+            </a>
+        </nav>
+    </aside>
+
+    <!-- MAIN DASHBOARD (YOUR ORIGINAL CODE) -->
+    <div class="dashboard-container">
+
+        <header class="dashboard-header">
+            <button class="menu-toggle" (click)="toggleSidebar()">
+                <i class="fa-solid fa-bars"></i>
+            </button>
+
+            <div class="header-text">
+                <h1>Admin Dashboard</h1>
+                <p>Welcome back, Administrator</p>
+            </div>
+
+            <div class="stats-summary">
+                <span class="status-badge">System Live</span>
+            </div>
+        </header>
+        <router-outlet></router-outlet>

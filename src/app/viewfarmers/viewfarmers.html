@@ -1,0 +1,50 @@
+
+@for (farmer of farmers(); track $index) {
+  <div class="farmer-card" >
+  <!-- Left: Farmer Info -->
+  <div class="card-info">
+    <div class="card-header">
+      <h2>{{ farmer.username }}</h2>
+      <span class="status" [class.active]="farmer.status === 1">
+        {{ farmer.status === 1 ? 'Active' : 'Inactive' }}
+      </span>
+    </div>
+
+    <div class="card-body">
+      <div class="info-row">
+        <div class="label">Email:</div>
+        <div class="value">{{ farmer.email }}</div>
+      </div>
+      <div class="info-row">
+        <div class="label">Phone:</div>
+        <div class="value">{{ farmer.phoneno }}</div>
+      </div>
+      <div class="info-row">
+        <div class="label">Address:</div>
+        <div class="value">{{ farmer.address }}, {{ farmer.city }}, {{ farmer.state }}</div>
+      </div>
+      <div class="info-row">
+        <div class="label">Registered On:</div>
+        <div class="value">{{ farmer.datetime | date:'medium' }}</div>
+      </div>
+      <div class="info-row">
+        <div class="label">Aadhar No:</div>
+        <div class="value">{{ farmer.farmerAdhar | slice:0:4 }}-xxxx-xxxx</div>
+      </div>
+
+      <!-- Buttons -->
+      <div class="card-buttons">
+        <button class="btn block" (click)="blockFarmer( )">Block</button>
+        <button class="btn unblock" (click)="unblockFarmer( )">Unblock</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Right: Images -->
+  <div class="card-images">
+    <img *ngIf="farmer.farmerAdhar" [src]="farmer.farmerAdhar" alt="Aadhar Front">
+    <img *ngIf="farmer.farmerAdharback" [src]="farmer.farmerAdharback" alt="Aadhar Back">
+  </div>
+</div>
+
+}
