@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { AdminNavbar } from './admin-navbar';
+import { Customerproducthistory } from './customerproducthistory';
 
-describe('AdminNavbar', () => {
-  let component: AdminNavbar;
-  let fixture: ComponentFixture<AdminNavbar>;
+describe('Customerproducthistory', () => {
+  let component: Customerproducthistory;
+  let fixture: ComponentFixture<Customerproducthistory>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [AdminNavbar]
+      declarations: [Customerproducthistory]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(AdminNavbar);
+    fixture = TestBed.createComponent(Customerproducthistory);
     component = fixture.componentInstance;
     await fixture.whenStable();
   });

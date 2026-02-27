@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, inject, OnInit } from '@angular/core';
+import { WebClientService } from '../../web-client-service';
 
 @Component({
   selector: 'app-farmer-homepage',
@@ -6,6 +7,11 @@ import { Component } from '@angular/core';
   templateUrl: './farmer-homepage.html',
   styleUrl: './farmer-homepage.scss',
 })
-export class FarmerHomepage {
+export class FarmerHomepage implements OnInit{
+  
+private webclent=inject(WebClientService) 
+  ngOnInit(): void {
+    this.webclent.isLogedIn()
+  }
 
 }

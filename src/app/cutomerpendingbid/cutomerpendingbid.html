@@ -1,0 +1,35 @@
+<app-customer-navbar></app-customer-navbar>
+
+<div class="product-container">
+
+  <div class="product-card" *ngFor="let product of bidding" (click)="placeBid(product.productId,product.bid)">
+
+    <!-- LEFT IMAGE -->
+    <div class="product-image">
+      <img [src]="product.img1" alt="Product Image">
+    </div>
+
+    <!-- CENTER CONTENT -->
+    <div class="product-content">
+      <h2 class="product-name">{{ product.productName }}</h2>
+      <p class="product-desc">
+        {{ product.description }}
+      </p>
+    </div>
+
+    <!-- RIGHT SIDE -->
+    <div class="product-right">
+      <h3 class="product-price">₹ {{ product.price }}</h3>
+      <p class="product-date">
+        {{ product.datetime| date:'yyyy-MM-dd hh:mm a' }}
+      </p>
+    </div>
+
+  </div>
+
+</div>
+
+<ng-template #notbiddingproduct>
+  not products
+</ng-template>
+<app-footer></app-footer>

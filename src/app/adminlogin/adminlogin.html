@@ -1,0 +1,27 @@
+<div class="login-bg">
+    <div class="login-card">
+
+        <!-- Avatar -->
+        <div class="avatar">
+            <i class="fas fa-user-shield"></i>
+        </div>
+
+        <h2>Login</h2>
+        <p>Access your admin dashboard</p>
+
+        <!-- Username -->
+        <div class="input-box">
+            <i class="fas fa-user user-icon"></i>
+            <input type="text" placeholder="Enter Username" [(ngModel)]="username">
+        </div>
+
+        <!-- Password -->
+        <div class="input-box">
+            <i class="fas fa-lock password-icon"></i>
+            <input type="password" placeholder="Password" [(ngModel)]="password">
+        </div>
+
+        <button (click)="login()">Login</button>
+
+    </div>
+</div>

@@ -1,0 +1,55 @@
+<app-customer-navbar></app-customer-navbar>
+
+
+
+<div class="search-wrapper">
+    <div class="search-box">
+        <i class="fas fa-search search-icon"></i>
+        <input type="search" class="search-input" placeholder="Search crops, markets, suppliers..."
+            [(ngModel)]="productItem">
+        <button class="search-btn">
+            Search
+        </button>
+    </div>
+</div>
+
+
+<div class="product-container">
+
+    <div class="product-card" *ngFor="let product of products | productfilter:productItem ;">
+
+        <!-- Product Image -->
+        <div class="product-image">
+            <img [src]="product.img1" alt="Product Image">
+        </div>
+
+        <!-- Product Information -->
+        <div class="product-info">
+
+            <h2 class="product-title">
+                {{product.productName}}
+            </h2>
+
+            <p class="product-type">
+                <strong>Type:</strong> {{product.productType}}
+            </p>
+
+            <p class="product-description">
+                {{product.description}}
+            </p>
+
+            <div class="product-details">
+                <span><strong>Price:</strong> ₹{{product.price}}</span>
+                <span><strong>Quantity:</strong> {{product.quantity}} Kg</span>
+                <span><strong>Date:</strong> {{product.datetime }}</span>
+            </div>
+
+            <!-- Bid Button -->
+            <a routerLink="/firstbidvalue"><button class="bid-btn" (click)="bidproduct(product.pid)">
+                    Bid Now →
+                </button>
+            </a>
+        </div>
+    </div>
+
+</div>

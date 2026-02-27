@@ -61,13 +61,13 @@
 
 <div class="page-bg">
   <div class="register-container">
-    <h2>Farmer Registration</h2>
+    <h2>Registration</h2>
 
     <form #regForm="ngForm" (ngSubmit)="onSubmit(regForm)" novalidate>
 
       <!-- Farmer Name -->
       <div class="form-group" [class.has-error]="username.invalid && username.touched">
-        <label>Farmer Name *</label>
+        <label>Name *</label>
         <div class="input-wrapper">
           <span class="material-icons field-icon">person</span>
           <input type="text" name="username" required [(ngModel)]="faremer.username" #username="ngModel"

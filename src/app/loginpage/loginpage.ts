@@ -16,7 +16,7 @@ export class Loginpage {
   loginError: string = '';
 
 
-  constructor(private router: Router) { }
+  private router = inject(Router)
   private webclient = inject(WebClientService)
   login(form: NgForm) {
     this.loginError = '';
@@ -33,8 +33,8 @@ export class Loginpage {
           next: (data: any) => {
             console.log(data.fid)
             if (this.username === data.username && this.password === data.password) {
-              sessionStorage.setItem("id", data.fid)
-              sessionStorage.setItem("username", data.username)
+              localStorage.setItem("id", data.fid)
+              localStorage.setItem("username", data.username)
               this.router.navigate(['/farmerhomepage']);
               form.resetForm();
 
@@ -45,7 +45,7 @@ export class Loginpage {
             }
           },
           error(err) {
-            alert(err.username + "not exit")
+            alert("user not exit"+ " not exits")
           },
         })
 
@@ -79,14 +79,14 @@ export class Loginpage {
 
             if (this.username === data.username && this.password === this.password) {
               console.log(data)
-              sessionStorage.setItem("id", data.cid)
-              sessionStorage.setItem("username", data.username)
+              localStorage.setItem("id", data.cid)
+              localStorage.setItem("username", data.username)
               this.router.navigate(['/customerhomepage'])
               form.resetForm()
             }
           },
           error(err) {
-            alert(err.username + "not exit")
+            alert("user not exit"+ "not exit")
           },
         })
       }

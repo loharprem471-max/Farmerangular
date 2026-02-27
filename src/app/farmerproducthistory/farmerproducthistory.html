@@ -1,0 +1,45 @@
+<app-farmer-navbar></app-farmer-navbar>
+
+
+<div class="history-container">
+
+    <div class="history-card">
+
+        <!-- ================= TOP : PRODUCT DETAILS ================= -->
+        <div class="product-section">
+
+            <div class="product-image">
+                <img [src]="history.img1" alt="Product Image">
+            </div>
+
+            <div class="product-details">
+                <h2>{{ history.productName }}</h2>
+                <p><strong>Type:</strong> {{ history.productType }}</p>
+                <p><strong>Quantity:</strong> {{ history.quantity }}</p>
+                <p><strong>Base Price:</strong> ₹ {{ history.price }}</p>
+                <p><strong>Description:</strong> {{ history.description }}</p>
+            </div>
+
+        </div>
+
+        <!-- ================= BOTTOM : CUSTOMER DETAILS ================= -->
+        <div class="customer-section">
+
+            <div class="customer-image">
+                <img [src]="history.customername" alt="Customer Image">
+            </div>
+
+            <div class="customer-details">
+                <p><strong>Name:</strong> {{ history.customername }}</p>
+                <p><strong>Phone:</strong> {{ history.phoneno }}</p>
+                <p><strong>City:</strong> {{ history.city }}</p>
+                <p><strong>State:</strong> {{ history.state }}</p>
+                <p><strong>Bidding Price:</strong> ₹ {{ history.biddingPrice }}</p>
+                <p><strong>Date & Time:</strong> {{ history.datetime }}</p>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>

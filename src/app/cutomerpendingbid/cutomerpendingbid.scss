@@ -1,0 +1,105 @@
+/* Container */
+.product-container {
+  width: 95%;
+  margin: 20px auto;
+}
+
+/* Card */
+.product-card {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: #eaf4ea;
+  border-left: 6px solid #2e7d32;
+  border-radius: 14px;
+  padding: 20px;
+  margin-bottom: 20px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  transition: all 0.3s ease;
+}
+
+.product-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08);
+}
+
+/* Image Section */
+.product-image img {
+  width: 95px;
+  height: 95px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 3px solid #2e7d32;
+}
+
+/* Content Section */
+.product-content {
+  flex: 1;
+  padding: 0 20px;
+}
+
+.product-name {
+  margin: 0;
+  font-size: 22px;
+  font-weight: 600;
+  color: #1b5e20;
+}
+
+.product-desc {
+  margin-top: 6px;
+  font-size: 15px;
+  color: #2e7d32;
+  line-height: 1.5;
+}
+
+/* Right Section */
+.product-right {
+  text-align: right;
+  min-width: 120px;
+}
+
+.product-price {
+  margin: 0;
+  font-size: 22px;
+  font-weight: 700;
+  color: #1b5e20;
+}
+
+.product-date {
+  margin-top: 8px;
+  font-size: 14px;
+  color: #5f6f65;
+}
+
+/* ============================= */
+/* 📱 Responsive Design */
+/* ============================= */
+
+@media (max-width: 768px) {
+
+  .product-card {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 15px;
+  }
+
+  .product-content {
+    padding: 0;
+  }
+
+  .product-right {
+    text-align: left;
+    width: 100%;
+  }
+
+  .product-price {
+    font-size: 20px;
+  }
+
+  .product-image img {
+    width: 80px;
+    height: 80px;
+  }
+}
+
+

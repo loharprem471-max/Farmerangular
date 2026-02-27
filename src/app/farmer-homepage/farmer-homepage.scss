@@ -2,3 +2,189 @@
 .carousel img {
   object-fit: cover;
 }
+
+
+
+body {
+  background: #eef7e9;
+  color: #1f2937;
+}
+
+/* ===== SECTION ===== */
+.section {
+  padding: 70px 8%;
+  text-align: center;
+}
+
+.section h2 {
+  font-size: 32px;
+  color: #166534;
+  margin-bottom: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}
+
+.section p {
+  max-width: 780px;
+  margin: 0 auto 45px;
+  font-size: 16px;
+  line-height: 1.7;
+  color: #4b5563;
+}
+
+/* ===== CARD GRID ===== */
+.steps {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 35px;
+}
+
+/* ===== CARD ===== */
+.step {
+  background: #ffffff;
+  padding: 32px 26px;
+  border-radius: 22px;
+  box-shadow: 0 18px 40px rgba(22, 163, 74, 0.15);
+  transition: all 0.35s ease;
+  position: relative;
+}
+
+/* TOP YELLOW STRIP (MATCH IMAGE) */
+.step::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 6px;
+  width: 100%;
+  background: #facc15;
+  border-radius: 22px 22px 0 0;
+}
+
+/* HOVER EFFECT */
+.step:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 28px 55px rgba(22, 163, 74, 0.25);
+}
+
+/* ===== CARD TITLE ===== */
+.step h3 {
+  font-size: 22px;
+  color: #16a34a;
+  margin-bottom: 12px;
+}
+
+/* ===== CARD TEXT ===== */
+.step p {
+  font-size: 15px;
+  color: #4b5563;
+  line-height: 1.6;
+}
+
+/* ===== SECTION COLOR VARIANTS ===== */
+.bidding .step h3 {
+  color: #15803d;
+}
+
+.junction .step h3 {
+  color: #16a34a;
+}
+
+.waste .step h3 {
+  color: #166534;
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 768px) {
+  .section {
+    padding: 55px 6%;
+  }
+
+  .section h2 {
+    font-size: 26px;
+  }
+}
+
+@media (max-width: 480px) {
+  .section h2 {
+    font-size: 24px;
+  }
+
+  .section p {
+    font-size: 15px;
+  }
+}
+
+/* Live Crop Bidding icons */
+.bidding .fa-gavel {
+  color: #6a1b9a;
+  /* purple */
+}
+
+.bidding .fa-chart-line {
+  color: #1e88e5;
+  /* blue */
+}
+
+.bidding .fa-handshake {
+  color: #2e7d32;
+  /* green */
+}
+
+.bidding .fa-eye {
+  color: #f9a825;
+  /* amber */
+}
+
+/* Farmer Junction icons */
+.junction .fa-people-group {
+  color: #1565c0;
+  /* deep blue */
+}
+
+.junction .fa-book-open {
+  color: #8e24aa;
+  /* violet */
+}
+
+.junction .fa-users {
+  color: #00897b;
+  /* teal */
+}
+
+.junction .fa-user-tie {
+  color: #5d4037;
+  /* brown */
+}
+
+/* Waste Management icons */
+.waste .fa-recycle {
+  color: #2e7d32;
+  /* eco green */
+}
+
+.waste .fa-leaf {
+  color: #43a047;
+  /* leaf green */
+}
+
+.waste .fa-earth-asia {
+  color: #0277bd;
+  /* earth blue */
+}
+
+.waste .fa-indian-rupee-sign {
+  color: #ef6c00;
+  /* orange */
+}
+
+/* Optional hover glow effect */
+.step i {
+  transition: transform 0.3s ease, color 0.3s ease;
+}
+
+.step:hover i {
+  transform: scale(1.2);
+}

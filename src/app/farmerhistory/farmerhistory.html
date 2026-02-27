@@ -1,0 +1,29 @@
+<app-farmer-navbar></app-farmer-navbar>
+
+<div class="history-container">
+
+    <div class="history-card" *ngFor="let history of farmerHistoryList" n (click)="producthistory(history.pid)">
+
+        <!-- LEFT SIDE - IMAGE -->
+        <!-- <div  *ngIf="history.status === 0"> -->
+        @if (history.status==0) {
+        <div class="history-image">
+            <img [src]="history.imgname1" alt="Product Image">
+        </div>
+
+        <!-- CENTER - DETAILS -->
+        <div class="history-details">
+            <h3>{{ history.productName }}</h3>
+            <h3>{{ history.description }}</h3>
+        </div>
+
+        <!-- RIGHT SIDE - PRICE & DATE -->
+        <div class="history-info">
+            <p class="price">₹ {{ history.price }}</p>
+            <p class="date">{{ history.datetime }}</p>
+        </div>
+        }
+    </div>
+    <!-- </div> -->
+
+</div>

@@ -1,0 +1,71 @@
+.history-container {
+    width: 95%;
+    margin: 20px auto;
+}
+
+.history-card {
+    background: #f6fff2;
+    border-radius: 15px;
+    padding: 20px;
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.08);
+    border-top: 6px solid #2e7d32;
+}
+
+/* ================= PRODUCT SECTION ================= */
+
+.product-section {
+    display: flex;
+    gap: 20px;
+    padding-bottom: 20px;
+    border-bottom: 2px solid #dcedc8;
+}
+
+.product-image img {
+    width: 140px;
+    height: 140px;
+    object-fit: cover;
+    border-radius: 12px;
+    border: 3px solid #66bb6a;
+}
+
+.product-details h2 {
+    margin: 0 0 10px;
+    color: #1b5e20;
+}
+
+/* ================= CUSTOMER SECTION ================= */
+
+.customer-section {
+    display: flex;
+    gap: 20px;
+    padding-top: 20px;
+}
+
+.customer-image img {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 3px solid #81c784;
+}
+
+.customer-details p {
+    margin: 5px 0;
+}
+
+/* ================= RESPONSIVE ================= */
+
+@media (max-width: 768px) {
+
+    .product-section,
+    .customer-section {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+
+    .product-image img,
+    .customer-image img {
+        margin-bottom: 10px;
+    }
+}

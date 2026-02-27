@@ -1,0 +1,71 @@
+<app-farmer-navbar></app-farmer-navbar>
+
+<!-- @if (bidlist[0].status==1) { -->
+<div class="auction-wrapper">
+
+    <div class="auction-card">
+
+        <div class="auction-header">
+
+
+            <div class="product-photo">
+                <img [src]="bidlist[0].img1" alt="Product Image">
+            </div>
+
+            <div class="product-details">
+
+                <h2 class="product-title">{{ bidlist[0].productName }}</h2>
+                <p><strong>Product Type:</strong> {{ bidlist[0].productType }}</p>
+                <p><strong>Quantity:</strong> {{ bidlist[0].quantity }}</p>
+                <p><strong>Base Price:</strong> ₹ {{ bidlist[0].price }}</p>
+                <p><strong>Description:</strong> {{ bidlist[0].description }}</p>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+<!-- } -->
+
+
+<div class="bid-wrapper">
+
+    <div *ngFor="let bid of bidlist; let i = index" class="bid-card" [ngClass]="{'top-bid': i === 0}">
+
+        <!-- @if (bid.status==1) { -->
+        <!-- Header -->
+        <div class="bid-header">
+            <h2 class="customer-name">{{ bid.customername }}</h2>
+            <span *ngIf="i === 0" class="top-badge">TOP BID</span>
+        </div>
+
+        <!-- Body -->
+        <div class="bid-body">
+
+            <!-- Left Image -->
+            <div class="customer-image">
+                <img [src]="bid.img1" alt="Customer Image">
+            </div>
+
+            <!-- Right Info -->
+            <div class="bid-info">
+                <p><strong>Bid Value:</strong> ₹ {{ bid.biddingPrice }}</p>
+                <p><strong>Phone No:</strong> {{ bid.phoneno }}</p>
+                <p><strong>State:</strong> {{ bid.state }}</p>
+                <p><strong>City:</strong> {{ bid.city }}</p>
+            </div>
+
+        </div>
+
+        <!-- Buttons -->
+        <div class="bid-actions">
+            <button class="accept-btn" (click)="acceptBid(bid.bid,bid.customername)">Accept</button>
+            <button class="reject-btn" (click)="rejectBid(bid.bid,bid.customername)">Reject</button>
+        </div>
+        <!-- } -->
+    </div>
+
+</div>

@@ -1,8 +1,8 @@
- <nav class="og-nav" [class.is-open]="menuOpen">
+<nav class="og-nav" [class.is-open]="menuOpen">
     <div class="nav-inner">
-        <a class="brand" routerLink="/" (click)="closeAll()">
+        <a class="brand" routerLink="/customerhomepage" (click)="closeAll()">
             <!-- <i class="fa-solid fa-leaf"></i> -->
-             🌾
+            🌾
             <span>Farmer-Connect</span>
         </a>
 
@@ -13,40 +13,47 @@
         <ul class="links" [class.show]="menuOpen">
 
             <li>
-                <a routerLink="/aboutus" (click)="closeAll()">
+                <a routerLink="/customerabout" (click)="closeAll()">
                     <i class="fa-solid fa-circle-info"></i> About Us
                 </a>
             </li>
 
-            <li>
-                <a routerLink="/account" (click)="closeAll()">
+            <!-- ACCOUNT DROPDOWN -->
+            <li class="dropdown" [class.open]="openDropdown === 'account'">
+                <button (click)="toggleDropdown('account')">
                     <i class="fa-solid fa-user-circle"></i> Account
-                </a>
+                    <i class="fa-solid fa-chevron-down caret"></i>
+                </button>
+                <ul class="dropdown-menu">
+                    <li>
+                        <a routerLink="/customeraccount" (click)="closeAll()">
+                            <i class="fa-solid fa-user-pen"></i> Update Profile
+                        </a>
+                    </li>
+                    <li>
+                        <a (click)="logout()">
+                            <i class="fa-solid fa-right-from-bracket"></i> Log Out
+                        </a>
+                    </li>
+                </ul>
             </li>
 
             <!-- ✅ PURCHASE BID -->
             <li>
-                <a routerLink="/bids/purchase" (click)="closeAll()">
+                <a routerLink="/biddingproduct" (click)="closeAll()">
                     <i class="fa-solid fa-cart-shopping"></i> Purchase Bid
                 </a>
             </li>
 
             <!-- ✅ VIEW BID -->
             <li>
-                <a routerLink="/bids/view" (click)="closeAll()">
-                    <i class="fa-solid fa-gavel"></i> View Bid
-                </a>
-            </li>
-
-            <!-- ✅ WEST COLLECTING -->
-            <li>
-                <a routerLink="/west/collecting" (click)="closeAll()">
-                    <i class="fa-solid fa-recycle"></i> West Collecting
+                <a routerLink="/pendingbid" (click)="closeAll()">
+                    <i class="fa-solid fa-gavel"></i> View Pending Bid
                 </a>
             </li>
 
             <li>
-                <a routerLink="/history" (click)="closeAll()">
+                <a routerLink="/customerhistory" (click)="closeAll()">
                     <i class="fa-solid fa-clock-rotate-left"></i> History
                 </a>
             </li>

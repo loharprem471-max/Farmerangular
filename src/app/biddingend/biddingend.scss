@@ -1,0 +1,281 @@
+/* ===== Wrapper ===== */
+.auction-wrapper {
+    width: 95%;
+    margin: 40px auto;
+}
+
+/* ===== Card (Farmer Theme) ===== */
+.auction-card {
+    background: #f9fff4;
+    /* light natural background */
+    border-radius: 16px;
+    padding: 30px;
+    border: 2px solid #8bc34a;
+    /* fresh green border */
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+    transition: 0.3s ease;
+}
+
+.auction-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 14px 28px rgba(0, 0, 0, 0.15);
+}
+
+/* ===== Layout ===== */
+.auction-header {
+    display: flex;
+    gap: 40px;
+    align-items: center;
+}
+
+/* ===== Product Image ===== */
+.product-photo img {
+    width: 230px;
+    height: 230px;
+    border-radius: 14px;
+    object-fit: cover;
+    border: 5px solid #558b2f;
+    /* dark farmer green */
+    background: #fff;
+}
+
+/* ===== Product Details ===== */
+.product-details {
+    flex: 1;
+}
+
+/* Product Title */
+.product-title {
+    margin-top: 0;
+    font-size: 28px;
+    color: #2e7d32;
+    /* strong green */
+    margin-bottom: 15px;
+    border-bottom: 2px solid #aed581;
+    padding-bottom: 8px;
+}
+
+/* Details Text */
+.product-details p {
+    margin: 10px 0;
+    font-size: 16px;
+    color: #4e342e;
+    /* soil brown */
+}
+
+/* Label */
+.product-details strong {
+    color: #1b5e20;
+}
+
+/* ===== Responsive ===== */
+@media (max-width: 768px) {
+    .auction-header {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .product-photo img {
+        width: 100%;
+        height: auto;
+    }
+}
+
+
+
+
+
+
+
+/* ===== Wrapper (Flexbox Layout) ===== */
+.bid-wrapper {
+    width: 95%;
+    margin: 30px auto;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: flex-start;
+}
+
+/* ===== Card (New Premium Farmer Theme) ===== */
+.bid-card {
+    width: 32%;
+    background: linear-gradient(135deg, #e8f5e9, #d0f0c0);
+    border-radius: 15px;
+    padding: 20px;
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.1);
+    border: 2px solid #81c784;
+    display: flex;
+    flex-direction: column;
+    transition: 0.3s ease;
+}
+
+.bid-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 12px 25px rgba(0, 0, 0, 0.18);
+}
+
+/* ===== Top Bid Golden Border ===== */
+.top-bid {
+    border: 3px solid gold;
+    animation: blinkBorder 1s infinite alternate;
+}
+
+@keyframes blinkBorder {
+    from {
+        box-shadow: 0 0 10px gold;
+    }
+
+    to {
+        box-shadow: 0 0 25px orange;
+    }
+}
+
+/* ===== Header ===== */
+.bid-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.customer-name {
+    margin: 0;
+    font-size: 18px;
+    color: #1b5e20;
+    font-weight: 600;
+}
+
+.top-badge {
+    background: gold;
+    padding: 5px 10px;
+    border-radius: 8px;
+    font-size: 12px;
+    font-weight: bold;
+}
+
+/* ===== Body ===== */
+.bid-body {
+    display: flex;
+    gap: 15px;
+    margin-top: 15px;
+    align-items: center;
+}
+
+/* Left Image */
+.customer-image img {
+    width: 95px;
+    height: 95px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 3px solid #388e3c;
+}
+
+/* Right Info */
+.bid-info {
+    flex: 1;
+}
+
+.bid-info p {
+    margin: 6px 0;
+    font-size: 14px;
+    color: #2e4d2e;
+}
+
+/* ===== Buttons (Vertical Layout) ===== */
+.bid-actions {
+    display: flex;
+    flex-direction: column;
+    /* Vertical buttons */
+    gap: 10px;
+    margin-top: 20px;
+}
+
+.accept-btn,
+.reject-btn {
+    width: 100%;
+    /* Full width */
+    padding: 10px;
+    border: none;
+    border-radius: 8px;
+    color: white;
+    font-weight: 500;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+/* Accept Button */
+.accept-btn {
+    background: #2e7d32;
+}
+
+.accept-btn:hover {
+    background: #1b5e20;
+}
+
+/* Reject Button */
+.reject-btn {
+    background: #d32f2f;
+}
+
+.reject-btn:hover {
+    background: #9a0007;
+}
+
+/* ===== Blinking Accept Button for Top Bid ===== */
+.top-bid .accept-btn {
+    animation: blinkButton 1s infinite alternate;
+}
+
+@keyframes blinkButton {
+    from {
+        box-shadow: 0 0 10px #00e676;
+    }
+
+    to {
+        box-shadow: 0 0 20px #00c853;
+    }
+}
+
+/* ===== Responsive ===== */
+@media (max-width: 992px) {
+    .bid-card {
+        width: 48%;
+    }
+}
+
+@media (max-width: 600px) {
+    .bid-card {
+        width: 100%;
+    }
+
+    .bid-body {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+}
+
+
+
+.no-bid-box {
+    text-align: center;
+    padding: 40px;
+    border-radius: 12px;
+    background: #f4f9f4;
+    border: 2px dashed #4caf50;
+    margin-top: 20px;
+}
+
+.no-bid-box .icon {
+    font-size: 50px;
+    margin-bottom: 15px;
+}
+
+.no-bid-box h2 {
+    color: #2e7d32;
+    margin-bottom: 10px;
+}
+
+.no-bid-box p {
+    color: #555;
+    font-size: 15px;
+}

@@ -9,32 +9,41 @@ import { Customer } from './app/entities/Customer';
   providedIn: 'root',
 })
 export class WebClientService {
-  
-  private  username:any;
-  private password:any;
-  private readonly base_url='http://localhost:8080';
 
-  constructor(private http:HttpClient,){
-    sessionStorage.removeItem('username'),
-    sessionStorage.removeItem('password')
-    sessionStorage.clear()
+  private username: any;
+  private password: any;
+  private readonly base_url = 'http://localhost:8080';
+
+  constructor(private http: HttpClient,) {
+
   }
 
-  public postdata<T,U>(url: string,formdata:any):Observable<U>
-  {
-    return this.http.post<U>(`${this.base_url}${url}`,formdata);
+  public postdata<T, U>(url: string, formdata: any): Observable<U> {
+    return this.http.post<U>(`${this.base_url}${url}`, formdata);
   }
 
 
-  public getdata(url:String)
-  {
-    return this.http.get(`${this.base_url}${url}`);
+  public getdata(url: String): Observable<any> {
+    return this.http.get<any>(`${this.base_url}${url}`);
   }
-  
-  public getdataByid(url:string,data:any):Observable<Customer[]>
-  {
-        return this.http.post<Customer[]>(`${this.base_url}${url}`,data);
+
+  public getdataByid(url: string, formdata: any): Observable<any> {
+    return this.http.post<any>(`${this.base_url}${url}`, formdata);
   }
+
+  public putdata(url: string, formdata: any): Observable<any> {
+    return this.http.put<any>(`${this.base_url}${url}`, formdata)
+  }
+
+  public deletedata(url: string) {
+    return this.http.delete<any>(`${this.base_url}${url}`)
+  }
+
+  public getdataSingalid(url: string): Observable<any> {
+    return this.http.get<any>(`${this.base_url}${url}`);
+  }
+
+
   // public post<T, U>(url: string, body: T): Observable<U>
   // {
   //   return this.http.post<U>(`${this.base_url}${url}`, body, {
@@ -44,6 +53,14 @@ export class WebClientService {
   //   });
 
 
+  isLogedIn() {
+    return localStorage.getItem('id');
+  }
+
+  // isLogedOut()
+  // {
+  //   sessionStorage.clear();
+  // }
   //  public delete<T>(url: string): Observable<T>
   // {
   //   return this.http.delete<T>(`${this.base_url}${url}`, {

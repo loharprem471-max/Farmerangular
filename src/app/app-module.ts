@@ -1,4 +1,4 @@
-import { ModuleWithProviders, NgModule, provideBrowserGlobalErrorListeners } from '@angular/core';
+import { NgModule, provideBrowserGlobalErrorListeners } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
 
@@ -6,12 +6,9 @@ import { AppRoutingModule } from './app-routing-module';
 import { App } from './app';
 import { FarmerNavbar } from './farmer-navbar/farmer-navbar';
 import { CustomerNavbar } from './customer-navbar/customer-navbar';
-import { AdminNavbar } from './admin-navbar/admin-navbar';
 import { FarmerHomepage } from './farmer-homepage/farmer-homepage';
 import { CustomerHomepage } from './customer-homepage/customer-homepage';
-import { AdminHomepage } from './admin-homepage/admin-homepage';
 import { FarmerRegister } from './farmer-register/farmer-register';
-import { HttpClient } from '@angular/common/http';
 import { Aboutus } from './aboutus/aboutus';
 import { Startfarmer } from './startfarmer/startfarmer';
 import { Advertisment } from './advertisment/advertisment';
@@ -23,17 +20,44 @@ import { Sample } from './sample/sample';
 import { Testing } from './testing/testing';
 import { Layout } from './layout/layout';
 import { Dashboard } from './dashboard/dashboard';
-import { Addproduct } from './addproduct/addproduct';
+import { FilterPipe } from './pipes/filter-pipe';
+import { Product } from './product/product';
+import { Adminlogin } from './adminlogin/adminlogin';
+import { Account } from './account/account';
+import { CommonModule, NgOptimizedImage } from '@angular/common';
+import { Newusers } from './newusers/newusers';
+import { Newcustomers } from './newcustomers/newcustomers';
+import { Viewproduct } from './viewproduct/viewproduct';
+import { Addjunction } from './addjunction/addjunction';
+import { Customeraccount } from './customeraccount/customeraccount';
+import { Rentjunction } from './rentjunction/rentjunction';
+import { Wasteadd } from './wasteadd/wasteadd';
+import { Customerabout } from './customerabout/customerabout';
+import { Messages } from './messages/messages';
+import { Loader } from './loader/loader';
+import { Verifyemail } from './verifyemail/verifyemail';
+import { Otpverify } from './otpverify/otpverify';
+import { Changepassword } from './changepassword/changepassword';
+import { Cutomerpendingbid } from './cutomerpendingbid/cutomerpendingbid';
+import { BidValue } from './bid-value/bid-value';
+import { Farmerbidrequest } from './farmerbidrequest/farmerbidrequest';
+import { Biddingend } from './biddingend/biddingend';
+import { Farmerhistory } from './farmerhistory/farmerhistory';
+import { Farmerproducthistory } from './farmerproducthistory/farmerproducthistory';
+import { Customerhistory } from './customerhistory/customerhistory';
+import { Customerproducthistory } from './customerproducthistory/customerproducthistory';
+import { Biddingproducts } from './biddingproducts/biddingproducts';
+import { FirstbidValue } from './firstbid-value/firstbid-value';
+import { JunctionfilterPipe } from './pipes/junctionfilter-pipe';
+import { ProductfilterPipe } from './product/productfilter-pipe';
 
 @NgModule({
   declarations: [
     App,
     FarmerNavbar,
     CustomerNavbar,
-    AdminNavbar,
     FarmerHomepage,
     CustomerHomepage,
-    AdminHomepage,
     FarmerRegister,
     Aboutus,
     Startfarmer,
@@ -46,7 +70,35 @@ import { Addproduct } from './addproduct/addproduct';
     Testing,
     Layout,
     Dashboard,
-    Addproduct,
+    FilterPipe,
+    Product,
+    Adminlogin,
+    Account,
+    Newusers,
+    Newcustomers,
+    Viewproduct,
+    Addjunction,
+    Customeraccount,
+    Rentjunction,
+    Wasteadd,
+    Customerabout,
+    Messages,
+    Loader,
+    Verifyemail,
+    Otpverify,
+    Changepassword,
+    Cutomerpendingbid,
+    BidValue,
+    Farmerbidrequest,
+    Biddingend,
+    Farmerhistory,
+    Farmerproducthistory,
+    Customerhistory,
+    Customerproducthistory,
+    Biddingproducts,
+    FirstbidValue,
+    JunctionfilterPipe,
+    ProductfilterPipe,
 
 
   ],
@@ -54,8 +106,9 @@ import { Addproduct } from './addproduct/addproduct';
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-  
-  ],
+    CommonModule,
+    NgOptimizedImage
+],
   providers: [
     provideBrowserGlobalErrorListeners(),
 
@@ -63,7 +116,4 @@ import { Addproduct } from './addproduct/addproduct';
   bootstrap: [App]
 })
 export class AppModule { }
-// function importProvidersFrom(): import("@angular/core").Provider | import("@angular/core").EnvironmentProviders {
-//   throw new Error('Function not implemented.');
-// }
 
