@@ -1,6 +1,7 @@
 import { Component, inject, OnInit, signal } from '@angular/core';
 import { Farmer } from '../entities/Farmer';
 import { WebClientService } from '../../web-client-service';
+import { Loader } from '../loader/loader';
 @Component({
   selector: 'app-viewfarmers',
   standalone: false,
@@ -8,47 +9,55 @@ import { WebClientService } from '../../web-client-service';
   styleUrl: './viewfarmers.scss',
 })
 export class Viewfarmers implements OnInit {
-
   ngOnInit(): void {
-    this.getfarmers()
+    this.webclient.isAdminLogedIn()
+    this.getfarmers();
   }
 
+  selectedImage: string | null = null;
   farmers = signal<Farmer[]>([]);
-  searchTerm = ''
-  farmer = new Farmer;
+  searchTerm = '';
+   load:Boolean=false
+  farmer = new Farmer();
 
   private webclient = inject(WebClientService);
 
   getfarmers() {
+    this.load=true
     this.webclient.getdata('/farmer-list').subscribe({
       next: (data: any) => {
         this.farmers.set(data);
         console.log(data);
+        this.load=false
       },
       error(err) {
-        alert("no farmers")
+        alert('no farmers');
+        // this.load=false
       },
-    })
+    });
   }
 
-  blockFarmer(fid: Number) {
+  openImage(img: string) {
+    this.selectedImage = img;
+  }
 
-    this.farmer.status = 0;
-    const formdata = new FormData()
-    formdata.append("status", this.farmer.status.toString());
+  closeImage() {
+    this.selectedImage = null;
+  }
 
-    this.webclient.putdata(`/update-farmerstatus/${fid}`, formdata).subscribe({
+  blockFarmer(fid: Number, username: string) {
+    // this.farmer.status = 0;
+    // const formdata = new FormData();
+    // formdata.append('status', this.farmer.status.toString());
+
+    this.webclient.getdataSingalid(`/block-farmer/${fid}`).subscribe({
       next: (data: any) => {
-        alert(data.username + "Blocked Successfully")
-        this.getfarmers()
+        alert(username + 'Blocked Successfully');
+        this.getfarmers();
       },
       error(err) {
-        alert("Internal Server Error Please Try again..")
+        alert('Internal Server Error Please Try again..');
       },
-    })
-
-  }
-  unblockFarmer(fid: Number) {
-
+    });
   }
 }

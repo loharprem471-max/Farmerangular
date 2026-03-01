@@ -11,31 +11,30 @@ import { Router } from '@angular/router';
 })
 export class Customerhistory implements OnInit {
   ngOnInit(): void {
-    this.gethistory()
+    this.webclient.isLogedIn();
+    this.gethistory();
   }
 
+  customerhistorylist: Bidding[] | any;
 
-  customerhistorylist: Bidding[] | any
-
-  private webclient = inject(WebClientService)
-  private router = inject(Router)
+  private webclient = inject(WebClientService);
+  private router = inject(Router);
 
   gethistory() {
-    sessionStorage.getItem("cid")
+    sessionStorage.getItem('cid');
     this.webclient.getdataSingalid(`/getcustomer-history/${26}`).subscribe({
       next: (data) => {
-        console.log(data)
+        console.log(data);
         this.customerhistorylist = data;
       },
       error(err) {
-        alert("Not having any Bidding History...")
+        alert('Not having any Bidding History...');
       },
-    })
+    });
   }
 
   producthistory(pid: any) {
-
-    sessionStorage.setItem("pid", pid)
-    this.router.navigate(['/customerprohistory'])
+    sessionStorage.setItem('pid', pid);
+    this.router.navigate(['/customerprohistory']);
   }
 }

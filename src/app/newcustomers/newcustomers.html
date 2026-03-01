@@ -9,7 +9,7 @@
   </div>
 </div>
 
-@for (customer of customers(); track customer.cid) {
+@for (customer of customers() |customerfilter:searchTerm; track customer.cid) {
 
 @if (customer.status==0) {
 <div class="farmer-card">
@@ -32,17 +32,21 @@
         <div class="value">{{ customer.phoneno }}</div>
       </div>
       <div class="info-row">
-        <div class="label">Address:</div>
-        <div class="value">{{ customer.address }}, {{ customer.city }}, {{ customer.state }}</div>
+        <div class="label">State and City:</div>
+        <div class="value">{{ customer.city }}, {{ customer.state }}</div>
       </div>
       <div class="info-row">
-        <div class="label">Customer ID:</div>
-        <div class="value">{{ customer.cid }}</div>
+        <div class="label">Address:</div>
+        <div class="value">{{ customer.address }}</div>
+      </div>
+      <div class="info-row">
+        <div class="label">Registered On:</div>
+        <div class="value">{{ customer.datetime | date:'medium' }}</div>
       </div>
 
       <!-- Single Full-width Unblock Button (Green) -->
       <div class="card-buttons">
-        <button class="btn unblock full-width" (click)="approve(customer.cid)">
+        <button class="btn unblock full-width" (click)="approve(customer.cid,customer.username)">
           <i class="fas fa-unlock"></i>
           Approve to {{customer.username}}
         </button>
@@ -52,9 +56,19 @@
 
   <!-- Right: Images -->
   <div class="card-images">
-    <img *ngIf="customer.customerAdhar" [src]="customer.customerAdhar" alt="Aadhar Front" loading="lazy">
-    <img *ngIf="customer.customerAdharback" [src]="customer.customerAdharback" alt="Aadhar Back" loading="lazy">
+    <img *ngIf="customer.customerAdhar" [src]="customer.customerAdhar" alt="Aadhar Front" loading="lazy"
+      (click)="openImage(customer.customerAdhar)">
+    <img *ngIf="customer.customerAdharback" [src]="customer.customerAdharback" alt="Aadhar Back" loading="lazy"
+      (click)="openImage(customer.customerAdharback)">
   </div>
 </div>
 }
 }
+
+<div class="image-modal" *ngIf="selectedImage">
+  <span class="close-btn" (click)="closeImage()">
+    <i class="fa-solid fa-xmark"></i>
+  </span>
+  <img [src]="selectedImage" class="modal-img">
+</div>
+

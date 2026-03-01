@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { Component, inject, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
 import { WebClientService } from '../../web-client-service';
@@ -10,7 +10,10 @@ import { Junction } from '../entities/Junction';
   templateUrl: './addjunction.html',
   styleUrl: './addjunction.scss',
 })
-export class Addjunction {
+export class Addjunction implements OnInit{
+  ngOnInit(): void {
+    this.webclient.isLogedIn()
+  }
 
   junction = new Junction();
   // Junction model
@@ -76,7 +79,7 @@ export class Addjunction {
 
     const jundata = new FormData()
 
-    this.junction.farmerId = localStorage.getItem("id")
+    this.junction.farmerId =Number(localStorage.getItem("id"))
     jundata.append('address', this.junction.address.trim());
     jundata.append('cost', this.junction.cost.toString().trim());
     jundata.append('description', this.junction.description.trim());
@@ -85,13 +88,17 @@ export class Addjunction {
     jundata.append('img1', this.image1);
     jundata.append('img2', this.image2);
 
-    console.log(jundata)
+    console.log(jundata,this.junction.juncname,this.junction.farmerId)
+
 
     this.webclient.postdata('/add-junction', jundata).subscribe({
       next: (data: any) => {
         alert("successfully added...")
         console.log(data)
-      }
+      },
+      error(err) {
+        alert("Please Try again")
+      },
     })
   }
 }

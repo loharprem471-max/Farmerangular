@@ -1,4 +1,4 @@
-import { Component, inject, signal } from '@angular/core';
+import { Component, inject, OnInit, signal } from '@angular/core';
 import { Router } from '@angular/router';
 import { WebClientService } from '../../web-client-service';
 import { Customer } from '../entities/Customer';
@@ -10,65 +10,64 @@ import { Farmer } from '../entities/Farmer';
   templateUrl: './newcustomers.html',
   styleUrl: './newcustomers.scss',
 })
-export class Newcustomers {
+export class Newcustomers implements OnInit {
   customers = signal<Customer[]>([]);
+  selectedImage: string | null = null;
 
-  farmer = new Farmer
+  farmer = new Farmer();
 
+  loader: boolean = false;
+  username: any = '';
+  password: any = '';
 
-  username: any = ''
-  password: any = ''
-
-
-  searchTerm = ''
-  constructor(private router: Router,) { }
+  searchTerm = '';
+  private router = inject(Router);
   // private toastr=inject(ToastrService)
   ngOnInit(): void {
+    this.webclient.isAdminLogedIn();
     this.getCustomers();
   }
   private webclient = inject(WebClientService);
 
+  // geuserbyid() {
+  //   const formdata = new FormData();
 
+  //   (formdata.append('username', this.username.trim()),
+  //     formdata.append('password', this.password.trim()));
 
-  geuserbyid() {
-
-    const formdata = new FormData();
-
-    formdata.append('username', this.username.trim()),
-      formdata.append('password', this.password.trim())
-
-    return this.webclient.getdataByid('/farmer-login', formdata).subscribe((data: any) => {
-
-      console.log(data);
-      this.farmer = data;
-      this.router.navigateByUrl('/faremrnavbar')
-    })
-  }
-
+  //   return this.webclient.getdataByid('/farmer-login', formdata).subscribe((data: any) => {
+  //     console.log(data);
+  //     this.farmer = data;
+  //     this.router.navigateByUrl('/faremrnavbar');
+  //   });
+  // }
 
   getCustomers() {
     return this.webclient.getdata('/get-customer').subscribe((data: any) => {
-      console.log(data)
+      console.log(data);
       this.customers.set(data);
-    })
+    });
   }
 
-  approve(id: Number) {
-
-    console.log(id)
-
-    this.farmer.status = 1;
-    const formdata = new FormData()
-    formdata.append("status", this.farmer.status.toString())
-    this.webclient.putdata(`/update-customerstatus/${id}`, formdata).subscribe({
+  approve(id: Number, username: string) {
+    this.loader = true;
+    this.webclient.getdataSingalid(`/email-Sending-customer/${id}`).subscribe({
       next: (data) => {
-
-        alert(data.username + "allowed entry in Farmer-Connect..")
-        this.getCustomers()
+        alert(`user ${username} allowed entry in Farmer-Connect..`);
+        this.getCustomers();
+        this.loader = false;
       },
       error(err) {
-        alert("Something is wrong Please Try again..")
+        alert('Something is wrong Please Try again..');
       },
-    })
+    });
+  }
+
+  openImage(img: string) {
+    this.selectedImage = img;
+  }
+
+  closeImage() {
+    this.selectedImage = null;
   }
 }

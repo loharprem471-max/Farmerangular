@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { Component, inject, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Products } from '../entities/Products';
 import { NgForm } from '@angular/forms';
@@ -10,9 +10,11 @@ import { WebClientService } from '../../web-client-service';
   templateUrl: './product.html',
   styleUrl: './product.scss',
 })
-export class Product {
-
-
+export class Product implements OnInit{
+  ngOnInit(): void {
+    this.webclient.isLogedIn()
+  }
+private webclient=inject(WebClientService)
   productName:any=''
   // product:Products[]=[];
   product = new Products();
@@ -35,7 +37,6 @@ export class Product {
   image2: File | any = null;
 
   private router = inject(Router)
-  private webclient = inject(WebClientService);
 
   goHome() {
     this.router.navigate(['/farmerhomepage'])

@@ -12,6 +12,7 @@ import { pipe } from 'rxjs';
 })
 export class Cutomerpendingbid implements OnInit {
   ngOnInit(): void {
+    this.webclient.isLogedIn()
     this.getproductdata()
   }
 

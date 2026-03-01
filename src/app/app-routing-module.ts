@@ -103,7 +103,6 @@ const routes: Routes = [
   {
     path: "adminlgoin",
     component: Adminlogin,
-    canActivate: [farmerguardGuard]
 
   },
 
@@ -169,7 +168,7 @@ const routes: Routes = [
   },
 
   {
-    path: 'farmerbidrequest',
+    path: 'farmerbiddingrequest',
     component: Farmerbidrequest
   },
 
@@ -203,8 +202,8 @@ const routes: Routes = [
   },
 
   {
-    path:"firstbidvalue",
-    component:FirstbidValue
+    path: "firstbidvalue",
+    component: FirstbidValue
   },
   {
     path: "admin",

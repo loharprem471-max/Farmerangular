@@ -12,34 +12,30 @@ import { Products } from '../entities/Products';
   styleUrl: './firstbid-value.scss',
 })
 export class FirstbidValue {
-
-
   ngOnInit(): void {
-
-    this.getBiddingvalue()
+    this.webclient.isLogedIn();
+    this.getBiddingvalue();
   }
-
 
   newBidValue: number = 0;
-  bidvalue = new Bidding()
+  bidvalue = new Bidding();
 
-  private webclient = inject(WebClientService)
-  private router = inject(Router)
+  private webclient = inject(WebClientService);
+  private router = inject(Router);
 
   getBiddingvalue() {
-    let pid = sessionStorage.getItem("pid")
+    let pid = sessionStorage.getItem('pid');
     this.webclient.getdataSingalid(`/get-product/${pid}`).subscribe({
       next: (data) => {
-        console.log(data)
-        this.bidvalue = data
-        this.newBidValue = data.price
+        console.log(data);
+        this.bidvalue = data;
+        this.newBidValue = data.price;
       },
       error(err) {
-        alert("Newtwork issue Please try later...........")
+        alert('Newtwork issue Please try later...........');
       },
-    })
+    });
   }
-
 
   // placeBid(bid: number) {
 
@@ -55,27 +51,26 @@ export class FirstbidValue {
   //   })
   // }
 
-
   placeBid(productid: any) {
-    let cid = Number(localStorage.getItem("cid"))
-    let pid = Number(sessionStorage.getItem('pid'))
+    let cid = Number(localStorage.getItem('cid'));
+    let pid = Number(sessionStorage.getItem('pid'));
 
-    this.bidvalue.customerId = cid
-    this.bidvalue.productId = pid
+    this.bidvalue.customerId = cid;
+    this.bidvalue.productId = pid;
 
-    console.log("session pid" + pid)
-    console.log("data" + this.bidvalue)
-    console.log("cid" + this.bidvalue.customerId)
-    console.log(this.bidvalue.price)
+    console.log('session pid' + pid);
+    console.log('data' + this.bidvalue);
+    console.log('cid' + this.bidvalue.customerId);
+    console.log(this.bidvalue.price);
 
     this.webclient.postdata('/bidding-value', this.bidvalue).subscribe({
       next: (data) => {
-        console.log(data)
-        alert(`your successfully bid ${this.bidvalue.price} on ${this.bidvalue.productName}`)
+        console.log(data);
+        alert(`your successfully bid ${this.bidvalue.price} on ${this.bidvalue.productName}`);
       },
       error(err) {
-        alert("please Try again.............")
+        alert('please Try again.............');
       },
-    })
+    });
   }
 }

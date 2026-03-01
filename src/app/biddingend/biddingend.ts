@@ -12,6 +12,7 @@ import { Products } from '../entities/Products';
 })
 export class Biddingend implements OnInit {
   ngOnInit(): void {
+    this.webclient.isLogedIn()
     this.getbiddingValue()
   }
 

@@ -2,14 +2,14 @@
     <div class="search-box">
         <i class="fas fa-search search-icon"></i>
         <input type="search" class="search-input" placeholder="Search crops, markets, suppliers..."
-            [(ngModel)]="searchTerm">
+            [(ngModel)]="productItem">
         <button class="search-btn">
             Search
         </button>
     </div>
 </div>
 <div class="card-container">
-    @for (product of products; track product.pid) {
+    @for (product of products | productfilter:productItem ; track product.pid) {
     <div class="card">
         <!-- Left side: product image -->
         <div class="card-image">
@@ -25,7 +25,6 @@
             <p>Status: {{ product.status }}</p>
             <p>Date: {{ product.datetime }}</p>
             <p>Description: {{ product.description }}</p>
-            <p>Farmer ID: {{ product.farmerId }}</p>
         </div>
     </div>
 

@@ -374,7 +374,7 @@ nav .container {
 
 .process-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));//280
     gap: 2rem;
 }
 
@@ -567,3 +567,6 @@ nav .container {
         font-size: 2rem;
     }
 }
+
+
+

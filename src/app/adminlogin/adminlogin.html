@@ -12,13 +12,13 @@
         <!-- Username -->
         <div class="input-box">
             <i class="fas fa-user user-icon"></i>
-            <input type="text" placeholder="Enter Username" [(ngModel)]="username">
+            <input type="text" placeholder="Enter Username" [(ngModel)]="admindata.username" >
         </div>
 
         <!-- Password -->
         <div class="input-box">
             <i class="fas fa-lock password-icon"></i>
-            <input type="password" placeholder="Password" [(ngModel)]="password">
+            <input type="password" placeholder="Password" [(ngModel)]="admindata.password">
         </div>
 
         <button (click)="login()">Login</button>

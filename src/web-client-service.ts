@@ -57,6 +57,11 @@ export class WebClientService {
     return localStorage.getItem('id');
   }
 
+  isAdminLogedIn()
+  {
+    return localStorage.getItem("aid")
+  }
+
   // isLogedOut()
   // {
   //   sessionStorage.clear();

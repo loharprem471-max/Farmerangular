@@ -13,6 +13,7 @@ import { Farmer } from '../entities/Farmer';
 export class Account implements OnInit {
 
   ngOnInit(): void {
+    this.webclient.isLogedIn()
     this.getdetails()
   }
 
@@ -25,10 +26,10 @@ export class Account implements OnInit {
   private webclient = inject(WebClientService);
   private router = inject(Router)
 
-  id = localStorage.getItem('id')
+  fid =Number(localStorage.getItem('id'))
   getdetails() {
     this.loading = false
-    this.webclient.getdata(`/farmer-getbyid/${this.id?.toString()}`).subscribe({
+    this.webclient.getdata(`/farmer-getbyid/${this.fid}`).subscribe({
       next: (data: any) => {
         console.log(data);
         this.avatarPreview = data.farmerImg;
@@ -100,7 +101,7 @@ export class Account implements OnInit {
     formData.append('city', this.faremer.city);
     formData.append('profileImage', this.profileFile);
 
-    this.webclient.putdata(`/update-farmer/${this.id}`, formData).subscribe({
+    this.webclient.putdata(`/update-farmer/${this.fid}`, formData).subscribe({
       next: (data: any) => {
         console.log(data)
         alert(`${data.username} your detail updated scuccessfuly....`)

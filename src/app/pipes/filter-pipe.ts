@@ -1,5 +1,6 @@
 import { Pipe, PipeTransform } from '@angular/core';
 import { Farmer } from '../entities/Farmer';
+import { Customer } from '../entities/Customer';
 
 @Pipe({
   name: 'filter',
@@ -7,7 +8,7 @@ import { Farmer } from '../entities/Farmer';
 })
 export class FilterPipe implements PipeTransform {
 
-  transform(value: Farmer[], searchTerm: string) {
+  transform(value: Farmer[] , searchTerm: string) {
 
     if (value.length === 0 || searchTerm === '') {
       return value;

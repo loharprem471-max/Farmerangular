@@ -1,14 +1,13 @@
 <div class="search-wrapper">
   <div class="search-box">
     <i class="fas fa-search search-icon"></i>
-    <input type="search" class="search-input" placeholder="Search crops, markets, suppliers..."
-      [(ngModel)]="searchTerm">
+    <input type="search" class="search-input" placeholder="Search crops, markets, suppliers..." [(ngModel)]="customer">
     <button class="search-btn">
       Search
     </button>
   </div>
 </div>
-@for (customer of customers(); track customer.cid) {
+@for (customer of customers |customerfilter:customer; track customer.cid) {
 @if (customer.status===1) {
 <div class="farmer-card">
   <div class="card-info ">
@@ -28,13 +27,17 @@
         <div class="label">Phone:</div>
         <div class="value">{{ customer.phoneno }}</div>
       </div>
+            <div class="info-row">
+        <div class="label">State and City:</div>
+        <div class="value">{{ customer.city }}, {{ customer.state }}</div>
+      </div>
       <div class="info-row">
         <div class="label">Address:</div>
-        <div class="value">{{ customer.address }}, {{ customer.city }}, {{ customer.state }}</div>
+        <div class="value">{{ customer.address }} </div>
       </div>
       <div class="info-row">
         <div class="label">Registered On:</div>
-        <div class="value">{{ customer.cid}}</div>
+        <div class="value">{{ customer.datetime | date:'medium' }}</div>
       </div>
       <!-- <div class="info-row">
         <div class="label">Aadhar No:</div>
@@ -43,17 +46,33 @@
 
       <!-- Buttons -->
       <div class="card-buttons">
-        <button class="btn block" (click)="blockCustomer(customer.email)">Block</button>
-        <button class="btn unblock" (click)="unblockCustomer( )">Unblock</button>
+        <button class="btn block" (click)="blockCustomer(customer.cid,customer.username)">Block to
+          {{customer.username}}</button>
       </div>
     </div>
   </div>
 
   <!-- Right: Images -->
   <div class="card-images">
-    <img *ngIf="customer.customerAdhar" [src]="customer.customerAdhar" alt="Aadhar Front">
-    <img *ngIf="customer.customerAdharback" [src]="customer.customerAdharback" alt="Aadhar Back">
+    <img *ngIf="customer.customerAdhar" [src]="customer.customerAdhar" alt="Aadhar Front"
+      (click)="openImage(customer.customerAdhar)">
+    >
+    <img *ngIf="customer.customerAdharback" [src]="customer.customerAdharback" alt="Aadhar Back"
+      (click)="openImage(customer.customerAdharback)">
+    >
   </div>
 </div>
 }
 }
+
+
+<div class="image-modal" *ngIf="selectedImage">
+  <span class="close-btn" (click)="closeImage()">
+    <i class="fa-solid fa-xmark"></i>
+  </span>
+  <img [src]="selectedImage" class="modal-img">
+</div>
+
+<!-- <div class="loader" *ngIf="!loader">
+  <app-loader></app-loader>
+</div> -->

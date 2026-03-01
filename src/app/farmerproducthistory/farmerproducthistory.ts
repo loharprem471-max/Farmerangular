@@ -13,25 +13,25 @@ import { BidValue } from '../bid-value/bid-value';
 })
 export class Farmerproducthistory implements OnInit {
   ngOnInit(): void {
-    this.getproducthistory()
+    this.wbclient.isLogedIn();
+    this.getproducthistory();
   }
 
+  history = new Bidding();
 
-  history=new Bidding()
+  private wbclient = inject(WebClientService);
+  private router = inject(Router);
 
-  private wbclient=inject(WebClientService)
-  private router=inject(Router)
-
-  getproducthistory()
-  {
-    let pid=sessionStorage.getItem("pid")
-    this.wbclient.getdataSingalid(`/getfarmer-producthistory/${90}`).subscribe({next:(data:any)=>{
-      console.log(data)
-      this.history=data;
-    },
-  error(err) {
-    alert("something is wrong please try later...........")
-  },})
+  getproducthistory() {
+    let pid = sessionStorage.getItem('pid');
+    this.wbclient.getdataSingalid(`/getfarmer-producthistory/${90}`).subscribe({
+      next: (data: any) => {
+        console.log(data);
+        this.history = data;
+      },
+      error(err) {
+        alert('something is wrong please try later...........');
+      },
+    });
   }
-
 }

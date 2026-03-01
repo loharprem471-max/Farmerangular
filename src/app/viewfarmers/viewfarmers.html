@@ -9,7 +9,7 @@
   </div>
 </div>
 @for (farmer of farmers() | filter:searchTerm; track farmer.fid ) {
-@if (farmer.status==1) {
+@if (farmer.status===1) {
 <div class="farmer-card">
   <!-- Left: Farmer Info -->
   <div class="card-info">
@@ -30,21 +30,25 @@
         <div class="value">{{ farmer.phoneno }}</div>
       </div>
       <div class="info-row">
+        <div class="label">State and City:</div>
+        <div class="value">{{ farmer.city }}, {{ farmer.state }}</div>
+      </div>
+      <div class="info-row">
         <div class="label">Address:</div>
-        <div class="value">{{ farmer.address }}, {{ farmer.city }}, {{ farmer.state }}</div>
+        <div class="value">{{ farmer.address }}</div>
       </div>
       <div class="info-row">
         <div class="label">Registered On:</div>
         <div class="value">{{ farmer.datetime | date:'medium' }}</div>
       </div>
-      <div class="info-row">
+      <!-- <div class="info-row">
         <div class="label">Aadhar No:</div>
         <div class="value">{{ farmer.farmerAdhar | slice:0:4 }}-xxxx-xxxx</div>
-      </div>
+      </div> -->
 
       <!-- Single Full-width Block Button -->
       <div class="card-buttons">
-        <button class="btn block full-width" (click)="blockFarmer(farmer.fid)">
+        <button class="btn block full-width" (click)="blockFarmer(farmer.fid,farmer.username)">
           Block To {{farmer.username}}
         </button>
       </div>
@@ -53,11 +57,24 @@
 
   <!-- Right: Images -->
   <div class="card-images">
-    <img *ngIf="farmer.farmerAdhar" [src]="farmer.farmerAdhar" alt="Aadhar Front" loading="lazy">
-    <img *ngIf="farmer.farmerAdharback" [src]="farmer.farmerAdharback" alt="Aadhar Back" loading="lazy">
+    <img *ngIf="farmer.farmerAdhar" [src]="farmer.farmerAdhar" alt="Aadhar Front" loading="lazy"
+      (click)="openImage(farmer.farmerAdhar)">
+    <img *ngIf="farmer.farmerAdharback" [src]="farmer.farmerAdharback" alt="Aadhar Back" loading="lazy"
+      (click)="openImage(farmer.farmerAdharback)">
   </div>
 </div>
 
 }
 
 }
+
+<div class="image-modal" *ngIf="selectedImage">
+  <span class="close-btn" (click)="closeImage()">
+    <i class="fa-solid fa-xmark"></i>
+  </span>
+  <img [src]="selectedImage" class="modal-img">
+</div>
+
+<!-- <div class="loaderclass" *ngIf="!load">
+  <app-loader></app-loader>
+</div> -->

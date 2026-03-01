@@ -9,14 +9,14 @@ import { Farmer } from '../entities/Farmer';
   styleUrl: './newusers.scss',
 })
 export class Newusers implements OnInit {
-
   ngOnInit(): void {
-    this.getfarmers()
+    this.webclient.isAdminLogedIn();
+    this.getfarmers();
   }
-
+  selectedImage: string | null = null;
   farmers = signal<Farmer[]>([]);
-  searchTerm = ''
-  farmer = new Farmer;
+  searchTerm = '';
+  farmer = new Farmer();
 
   private webclient = inject(WebClientService);
 
@@ -24,33 +24,30 @@ export class Newusers implements OnInit {
     this.webclient.getdata('/farmer-list').subscribe({
       next: (data: any) => {
         this.farmers.set(data);
-        console.log(data);
       },
       error(err) {
-        alert("no farmers")
+        alert('no farmers');
       },
-    })
+    });
   }
 
-  approve(id: Number) {
+  openImage(img: string) {
+    this.selectedImage = img;
+  }
 
-    console.log(id)
+  closeImage() {
+    this.selectedImage = null;
+  }
 
-    this.farmer.status = 1;
-    const formdata = new FormData()
-    formdata.append("status", this.farmer.status.toString())
-    this.webclient.putdata(`/update-farmerstatus/${id}`, formdata).subscribe({
+  approve(id: Number, username: string) {
+    this.webclient.getdataSingalid(`/email-Sending-farmer/${id}`).subscribe({
       next: (data) => {
-
-        alert(data.username + "allowed entry in Farmer-Connect..")
-        this.getfarmers()
+        alert(username + 'allowed entry in Farmer-Connect..');
+        this.getfarmers();
       },
       error(err) {
-        alert("Something is wrong Please Try again..")
+        alert('Something is wrong Please Try again..');
       },
-    })
+    });
   }
-
 }
-
-

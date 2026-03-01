@@ -11,6 +11,7 @@ import { Router } from '@angular/router';
 })
 export class Farmerhistory implements OnInit {
   ngOnInit(): void {
+    this.webclient.isLogedIn()
     this.gethistory()
   }
 

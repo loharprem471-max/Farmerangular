@@ -3,12 +3,12 @@ import { WebClientService } from '../../web-client-service';
 import { Contact } from '../entities/Contact';
 
 @Component({
-  selector: 'app-startfarmer',
+  selector: 'app-customerfooter',
   standalone: false,
-  templateUrl: './startfarmer.html',
-  styleUrl: './startfarmer.scss',
+  templateUrl: './customerfooter.html',
+  styleUrl: './customerfooter.scss',
 })
-export class Startfarmer {
+export class Customerfooter {
 
 
   submitted = false;

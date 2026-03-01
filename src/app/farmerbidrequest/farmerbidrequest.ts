@@ -12,6 +12,7 @@ import { Router } from '@angular/router';
 })
 export class Farmerbidrequest implements OnInit {
   ngOnInit(): void {
+    this.webclient.isLogedIn()
     this.getproductlist()
   }
 
@@ -21,7 +22,7 @@ export class Farmerbidrequest implements OnInit {
   private router = inject(Router)
 
   getproductlist() {
-    let fid = sessionStorage.getItem('fid')
+    let fid = sessionStorage.getItem('id')
     this.webclient.getdataSingalid(`/getfarmer-product/${fid}`).subscribe({
       next: (data) => {
         this.productlist = data;

@@ -29,64 +29,43 @@ export class Loginpage {
 
       if (this.role === 'farmer') {
 
-        this.webclient.getdataByid('/farmer-login', formdata).subscribe({
+        this.webclient.getdataByid('/farmer-login/', formdata).subscribe({
           next: (data: any) => {
-            console.log(data.fid)
-            if (this.username === data.username && this.password === data.password) {
-              localStorage.setItem("id", data.fid)
-              localStorage.setItem("username", data.username)
-              this.router.navigate(['/farmerhomepage']);
-              form.resetForm();
+            // if (this.username === data.username && this.password === data.password) {
+            localStorage.setItem("id", data.fid)
+            localStorage.setItem("username", data.username)
+            console.log(data)
+            this.router.navigate(['/farmerhomepage']);
+            // form.resetForm();
 
-            }
-            else {
-              this.loginError = "Username or password doesn't match";
+            // }
+            // else {
+            //   this.loginError = "Username or password doesn't match";
 
-            }
+            // }
           },
           error(err) {
-            alert("user not exit"+ " not exits")
+            alert("Username or password doesn't match")
           },
         })
 
       }
 
-      // if (this.role === 'customer') {
-      //   this.webclient.getdataByid('/customer-login', formdata).subscribe((data: any) => {
-      //     // if (data && data.username) {
-      //     // if (this.username === data.username && this.password === data.password) {
-      //     //   sessionStorage.setItem("id", data.cid);
-      //     //   sessionStorage.setItem("username", data.username);
-      //     //   this.router.navigate(['/customerhomepage']);
-      //     //   form.resetForm();
-      //     // }
-      //     // }
-      //     // else {
-      //     //   this.loginError = "Username or password doesn't match";
 
-      //     // }
-      //     // },
-      //     // (error)=>{
-      //     //   alert(this.username + "not exit in customers")
-      //     // }
-      //     // )
-      //   }
-      // }
 
       if (this.role === 'customer') {
         this.webclient.getdataByid('/customer-login', formdata).subscribe({
           next: (data: any) => {
 
-            if (this.username === data.username && this.password === this.password) {
-              console.log(data)
-              localStorage.setItem("id", data.cid)
-              localStorage.setItem("username", data.username)
-              this.router.navigate(['/customerhomepage'])
-              form.resetForm()
-            }
+            // if (this.username === data.username && this.password === this.password) {
+            localStorage.setItem("id", data.cid)
+            localStorage.setItem("username", data.username)
+            this.router.navigate(['/customerhomepage'])
+            form.resetForm()
+            // }
           },
           error(err) {
-            alert("user not exit"+ "not exit")
+            alert("Username or password doesn't match")
           },
         })
       }
@@ -95,3 +74,10 @@ export class Loginpage {
     }
   }
 }
+//     // },
+//     // (error)=>{
+//     //   alert(this.username + "not exit in customers")
+//     // }
+//     // )
+//   }
+// }

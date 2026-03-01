@@ -10,11 +10,9 @@
     </div>
 </div>
 
-<div *ngIf="loader">
-    <app-loader></app-loader>
-</div>
 
-<div *ngIf="!loader">
+
+<div>
     <div class="card-container">
         @for (jun of junction | junctionfilter:searchJunction ; track jun.jid) {
 
@@ -38,10 +36,6 @@
                     <span>{{ jun.phoneno }}</span>
                 </div>
 
-                <div class="info">
-                    <span class="label">Status:</span>
-                    <span>{{ jun.status }}</span>
-                </div>
 
                 <p class="address">{{ jun.address }}</p>
 

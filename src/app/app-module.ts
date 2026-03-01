@@ -50,6 +50,8 @@ import { Biddingproducts } from './biddingproducts/biddingproducts';
 import { FirstbidValue } from './firstbid-value/firstbid-value';
 import { JunctionfilterPipe } from './pipes/junctionfilter-pipe';
 import { ProductfilterPipe } from './product/productfilter-pipe';
+import { Customerfooter } from './customerfooter/customerfooter';
+import { CustomerfilterPipe } from './pipes/customerfilter-pipe';
 
 @NgModule({
   declarations: [
@@ -99,6 +101,8 @@ import { ProductfilterPipe } from './product/productfilter-pipe';
     FirstbidValue,
     JunctionfilterPipe,
     ProductfilterPipe,
+    Customerfooter,
+    CustomerfilterPipe,
 
 
   ],

@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, inject, OnInit } from '@angular/core';
+import { WebClientService } from '../../web-client-service';
 
 @Component({
   selector: 'app-customerabout',
@@ -6,6 +7,9 @@ import { Component } from '@angular/core';
   templateUrl: './customerabout.html',
   styleUrl: './customerabout.scss',
 })
-export class Customerabout {
-
+export class Customerabout implements OnInit {
+  private webclient = inject(WebClientService);
+  ngOnInit(): void {
+    this.webclient.isLogedIn();
+  }
 }

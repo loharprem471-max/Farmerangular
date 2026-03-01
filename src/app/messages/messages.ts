@@ -10,6 +10,7 @@ import { WebClientService } from '../../web-client-service';
 })
 export class Messages implements OnInit {
   ngOnInit(): void {
+    this.webclient.isAdminLogedIn()
     this.getmessages()
   }
 

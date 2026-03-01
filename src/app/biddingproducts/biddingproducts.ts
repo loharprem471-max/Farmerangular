@@ -11,32 +11,31 @@ import { Product } from '../product/product';
   templateUrl: './biddingproducts.html',
   styleUrl: './biddingproducts.scss',
 })
-export class Biddingproducts  implements OnInit{
+export class Biddingproducts implements OnInit {
   ngOnInit(): void {
-    this.getAllproduct()
+    this.webclient.isLogedIn();
+    this.getAllproduct();
   }
 
-
-  products:Products[]=[]
- productItem=''
-  private webclient = inject(WebClientService)
-  private router = inject(Router)
-
+  products: Products[] = [];
+  productItem = '';
+  private webclient = inject(WebClientService);
+  private router = inject(Router);
 
   getAllproduct() {
     this.webclient.getdata('/get-product/').subscribe({
-      next: (data:any) => {
-        console.log(data)
-        this.products = data
+      next: (data: any) => {
+        console.log(data);
+        this.products = data;
       },
       error(err) {
-        alert("Please Try Later.........")
+        alert('Please Try Later.........');
       },
-    })
+    });
   }
 
   bidproduct(pid: any) {
-    sessionStorage.setItem("pid", pid)
-    console.log(pid)
+    sessionStorage.setItem('pid', pid);
+    console.log(pid);
   }
 }

@@ -1,5 +1,6 @@
 import { Component, inject } from '@angular/core';
 import { Router } from '@angular/router';
+import { WebClientService } from '../../web-client-service';
 @Component({
   selector: 'app-adminlogin',
   standalone: false,
@@ -7,17 +8,22 @@ import { Router } from '@angular/router';
   styleUrl: './adminlogin.scss',
 })
 export class Adminlogin {
-
-  username = '';
-  password = '';
-
-  private router = inject(Router)
+  admindata = {
+    username: '',
+    password: '',
+  };
+  private webclient = inject(WebClientService);
+  private router = inject(Router);
   login() {
-    if (this.username === 'admin' && this.password === '123') {
-      sessionStorage.setItem('id', '123')
-      this.router.navigate(["/admin"])
-    } else {
-      alert('Invalid Username or Password');
-    }
+    this.webclient.postdata('/admin-login/', this.admindata).subscribe({
+      next: (data: any) => {
+        localStorage.setItem('aid', data.Aid);
+        localStorage.setItem('username', data.Username);
+        this.router.navigate(['/admin']);
+      },
+      error(err) {
+        alert('Invalid Username or Password');
+      },
+    });
   }
 }

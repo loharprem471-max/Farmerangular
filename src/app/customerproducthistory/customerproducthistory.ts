@@ -13,6 +13,7 @@ import { Router } from '@angular/router';
 })
 export class Customerproducthistory implements OnInit {
   ngOnInit(): void {
+    this.webclient.isLogedIn()
     this.getproducthistory()
   }
 

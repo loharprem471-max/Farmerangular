@@ -11,7 +11,7 @@ import { WebClientService } from '../../web-client-service';
 })
 export class Customeraccount implements OnInit {
   ngOnInit(): void {
-
+   this.webclient.isLogedIn()
     this.getcutomerdata()
   }
 

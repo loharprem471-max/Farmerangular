@@ -8,23 +8,27 @@
         </div>
 
         <nav class="sidebar-menu">
-            <a routerLink="/admin/viewfarmers" (click)="closeSidebar()">
+
+            <a routerLink="/admin/viewfarmers" routerLinkActive="active-link" (click)="closeSidebar()">
                 <i class="fa-solid fa-wheat-awn"></i> Farmers
             </a>
-            <a routerLink="/admin/viewcustomer" (click)="closeSidebar()">
+            <a routerLink="/admin/viewcustomer" routerLinkActive="active-link" (click)="closeSidebar()">
                 <i class="fa-solid fa-users"></i> Customers
             </a>
-            <a routerLink="/admin/viewproduct" (click)="closeSidebar()">
+            <a routerLink="/admin/viewproduct" routerLinkActive="active-link" (click)="closeSidebar()">
                 <i class="fa-solid fa-box-open"></i> Products
             </a>
-            <a routerLink="/admin/message" (click)="closeSidebar()">
+            <a routerLink="/admin/message" routerLinkActive="active-link" (click)="closeSidebar()">
                 <i class="fa-solid fa-file-invoice-dollar"></i> Requests
             </a>
-            <a routerLink="/admin/newcustomers" (click)="closeSidebar()">
+            <a routerLink="/admin/newcustomers" routerLinkActive="active-link" (click)="closeSidebar()">
                 <i class="fa-solid fa-user-plus"></i> New Customers
             </a>
-            <a routerLink="/admin/newuser" (click)="closeSidebar()">
+            <a routerLink="/admin/newuser" routerLinkActive="active-link" (click)="closeSidebar()">
                 <i class="fa-solid fa-user-plus"></i> New Farmers
+            </a>
+            <a (click)="logout()">
+                <i class="fa-solid fa-right-from-bracket"></i> Logout
             </a>
 
         </nav>
