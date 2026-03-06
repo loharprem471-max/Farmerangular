@@ -19,6 +19,11 @@ export class Startfarmer {
 
   emailError = false;
   messageError = false;
+  isMenuOpen: boolean = false;
+
+  toggleMenu() {
+    this.isMenuOpen = !this.isMenuOpen;
+  }
 
   contact = new Contact()
   private webclient = inject(WebClientService)

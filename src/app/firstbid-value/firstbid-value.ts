@@ -52,7 +52,7 @@ export class FirstbidValue {
   // }
 
   placeBid(productid: any) {
-    let cid = Number(localStorage.getItem('cid'));
+    let cid = Number(localStorage.getItem("id"));
     let pid = Number(sessionStorage.getItem('pid'));
 
     this.bidvalue.customerId = cid;
@@ -67,6 +67,7 @@ export class FirstbidValue {
       next: (data) => {
         console.log(data);
         alert(`your successfully bid ${this.bidvalue.price} on ${this.bidvalue.productName}`);
+        this.router.navigate(["/pendingbid"])
       },
       error(err) {
         alert('please Try again.............');

@@ -15,43 +15,58 @@
 
 
 <div class="product-container">
+    <ng-container  *ngFor="let product of products | productfilter:productItem ;">
 
-    <div class="product-card" *ngFor="let product of products | productfilter:productItem ;">
+        <div class="product-card" *ngIf="product.status===1" >
+            <!-- <ng-template *ngIf="product.status==1"> -->
+                <!-- @if(product.status==1){ -->
+                <!-- Product Image -->
+                <div class="product-image">
+                    <img [src]="product.img1" alt="Product Image">
+                </div>
 
-        <!-- Product Image -->
-        <div class="product-image">
-            <img [src]="product.img1" alt="Product Image">
+                <!-- Product Information -->
+                <div class="product-info">
+
+                    <h2 class="product-title">
+                        {{product.productName}}
+                    </h2>
+
+                    <p class="product-type">
+                        <strong>Type:</strong> {{product.productType}}
+                    </p>
+
+                    <p class="product-description">
+                        {{product.description}}
+                    </p>
+
+                    <div class="product-details">
+                        <span><strong>Price:</strong> ₹{{product.price}}</span>
+                        <span><strong>Quantity:</strong> {{product.quantity}} Kg</span>
+                        <span><strong>Date:</strong> {{product.datetime }}</span>
+                    </div>
+
+                    <!-- Bid Button -->
+                    <a routerLink="/firstbidvalue"><button class="bid-btn" (click)="bidproduct(product.pid)">
+                            Bid Now →
+                        </button>
+                    </a>
+                </div>
+            <!-- </ng-template> -->
+        <!-- } -->
         </div>
 
-        <!-- Product Information -->
-        <div class="product-info">
 
-            <h2 class="product-title">
-                {{product.productName}}
-            </h2>
-
-            <p class="product-type">
-                <strong>Type:</strong> {{product.productType}}
-            </p>
-
-            <p class="product-description">
-                {{product.description}}
-            </p>
-
-            <div class="product-details">
-                <span><strong>Price:</strong> ₹{{product.price}}</span>
-                <span><strong>Quantity:</strong> {{product.quantity}} Kg</span>
-                <span><strong>Date:</strong> {{product.datetime }}</span>
-            </div>
-
-            <!-- Bid Button -->
-            <a routerLink="/firstbidvalue"><button class="bid-btn" (click)="bidproduct(product.pid)">
-                    Bid Now →
-                </button>
-            </a>
-        </div>
-    </div>
-
+    </ng-container>
 </div>
+
+<!--  No Products Found -->
+<ng-template #noProducts>
+    <div class="no-data-card">
+        <h2>No Products Found</h2>
+        <p>No products match your search criteria.</p>
+    </div>
+</ng-template>
+
 
 <app-customerfooter></app-customerfooter>

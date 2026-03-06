@@ -14,46 +14,55 @@
 
 <div>
     <div class="card-container">
-        @for (jun of junction | junctionfilter:searchJunction ; track jun.jid) {
+        <ng-container *ngIf="junction && junction.length>0;else onemtyjunction">
+            @for (jun of junction | junctionfilter:searchJunction ; track jun.jid) {
 
-        <div class="property-card">
+            <div class="property-card">
 
-            <!-- Image -->
-            <div class="image-wrapper">
-                <img [src]="jun.img1 || 'assets/no-image.png'" alt="Junction Image">
-            </div>
-
-            <!-- Card Body -->
-            <div class="card-body">
-                <h3 class="title">{{ jun.juncname }}</h3>
-
-                <p class="price">₹ {{ jun.cost }}</p>
-
-                <p class="desc">{{ jun.description }}</p>
-
-                <div class="info">
-                    <span class="label">Phone:</span>
-                    <span>{{ jun.phoneno }}</span>
+                <!-- Image -->
+                <div class="image-wrapper">
+                    <img [src]="jun.image" alt="Junction Image">
                 </div>
 
+                <!-- Card Body -->
+                <div class="card-body">
+                    <h3 class="title">{{ jun.juncname }}</h3>
 
-                <p class="address">{{ jun.address }}</p>
+                    <p class="price">₹ {{ jun.cost }}</p>
 
-                <button class="rent-btn" (click)="rentNow(jun.jid)">
-                    Rent Now
-                </button>
+                    <p class="desc">{{ jun.description }}</p>
+
+                    <div class="info">
+                        <span class="label">Phone:</span>
+                        <span>{{ jun.phoneno }}</span>
+                    </div>
+
+
+                    <p class="address">{{ jun.address }}</p>
+
+                    <button class="rent-btn" (click)="rentNow(jun.jid)">
+                        Rent Now
+                    </button>
+                </div>
+
             </div>
 
-        </div>
-
-        }
-
+            }
+        </ng-container>
     </div>
 </div>
 
+<ng-template #onemtyjunction>
+
+    <div class="no-data-card">
+        <h2>No Junctions Available</h2>
+        <p>Currently there are no rental junctions listed.</p>
+    </div>
+</ng-template>
 
 
 
+<!-- Loader -->
 
 
 <app-footer></app-footer>

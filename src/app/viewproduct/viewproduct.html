@@ -8,6 +8,7 @@
         </button>
     </div>
 </div>
+<!-- <ng-container *ngIf="products.length >0; else noProducts"> -->
 <div class="card-container">
     @for (product of products | productfilter:productItem ; track product.pid) {
     <div class="card">
@@ -31,3 +32,11 @@
 
     }
 </div>
+<!-- </ng-container> -->
+
+<ng-template  *ngIf="products?.length===0">
+    <div class="no-data-card">
+        <h2>No Products Found</h2>
+        <p>No products match your search or no products are available.</p>
+    </div>
+</ng-template>

@@ -1,38 +1,39 @@
 <app-farmer-navbar></app-farmer-navbar>
+<div class="product-container" *ngFor="let product of productlist; let i = index">
+    <!-- <ng-container *ngIf="productlist.length!=null; else emptyon"> -->
+    <div class="product-card" (click)="nextpage(product.pid)" *ngIf="product.status===1">
+        <!-- Only show if product.status is 1 -->
+        <!-- <ng-container *ngIf="product.status === 1"> -->
 
-
-<div class="chat-container">
-
-    <div class="chat-card" *ngFor="let product of productlist" (click)="nextpage(product.pid)">
-
-        <!-- Profile Image -->
-        <div class="chat-image">
-            <img [src]="product.imgname1" alt="Profile">
-        </div>
-
-        <!-- Chat Content -->
-        <div class="chat-content">
-
-            <div class="chat-top">
-                <h3>{{ product.productName }}</h3>
-                <span class="chat-time">
-                    {{ product.datetime }}
-                </span>
+            <!-- LEFT IMAGE -->
+            <div class="product-image">
+                <img [src]="product.imgname1" alt="Product Image">
             </div>
 
-            <div class="chat-bottom">
-                <p class="chat-message">
-                    {{ product.description }}
-                </p>
-
-                <span class="chat-price">
-                    ₹ {{ product.price }}
-                </span>
+            <!-- CENTER CONTENT -->
+            <div class="product-content">
+                <h2 class="product-name">{{ product.productName }}</h2>
+                <p class="product-desc">{{ product.description }}</p>
             </div>
 
-        </div>
+            <!-- RIGHT SIDE -->
+            <div class="product-right">
+                <h3 class="product-price">₹ {{ product.price }}</h3>
+                <p class="product-date">{{ product.datetime | date:'yyyy-MM-dd hh:mm a' }}</p>
+            </div>
 
+        <!-- </ng-container> -->
     </div>
-
 </div>
+
+
+
+<!--  No Products Card -->
+<!-- <ng-template #emptyon>
+    <div class="no-product-card">
+        <h2>No Products Available</h2>
+        <p>No chats or products found at the moment.</p>
+    </div>
+</ng-template> -->
+
 <app-footer></app-footer>

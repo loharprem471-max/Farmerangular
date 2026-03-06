@@ -69,3 +69,20 @@
         margin-bottom: 10px;
     }
 }
+
+
+.no-history-card {
+    text-align: center;
+    padding: 40px;
+    border-radius: 10px;
+    background-color: #f5f5f5;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.no-history-card h2 {
+    color: #888;
+}
+
+.no-history-card p {
+    color: #555;
+}

@@ -1,5 +1,6 @@
 <div class="card-container">
     @for (item of contact(); track item.id) {
+    <ng-container *ngIf="contact.length>=0;else onempty"></ng-container>
     <div class="card">
         <h3>{{ item.name }}</h3>
         <p class="email">{{ item.email }}</p>
@@ -11,3 +12,10 @@
     </div>
     }
 </div>
+
+<ng-template #onempty>
+    <div class="no-data-card">
+        <h2>No Contact Requests</h2>
+        <p>There are currently no pending contact messages.</p>
+    </div>
+</ng-template>

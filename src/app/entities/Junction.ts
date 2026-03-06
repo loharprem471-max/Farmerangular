@@ -5,9 +5,16 @@ export class Junction {
     phoneno: string = '';
     img1: string | any;
     img2: string | any;
+    image: string | any;
     address: string = '';
     description: string = '';
     datetime: string = '';
     status: string = '';
     farmerId: Number | any;
+
+
+    farmerimage: string | any = ''
+    farmername: string = ''
+    state: string = ''
+    city: string = ''
 }

@@ -1,33 +1,28 @@
-<!-- <nav>
-    <div class="container">
-        <a href="#hero" class="logo">
-            <i class="fas fa-seedling"></i> AgriBazaar
-        </a>
-        <ul class="nav-links">
-            <li><a href="#process">Process</a></li>
-            <li><a href="#features">Features</a></li>
-            <li><a href="#contact">Contact</a></li>
-        </ul>
-        <div class="hamburger">
-            <span></span>
-            <span></span>
-            <span></span>
-        </div>
-    </div>
-</nav> -->
+<nav class="navbar">
 
-<!-- <section class="hero" id="hero">
-    <div class="hero-content">
-        <h1>Digital Marketplace for Farmers</h1>
-        <p>Register, get verified, and access online crop bidding, equipment rental, and crop waste sales.</p>
-        <a href="#process" class="cta-button">
-            <i class="fas fa-rocket"></i> Start Now
-        </a>
+    <div class="logo">
+        🌿 Farmer Bidding
     </div>
-</section> -->
+
+    <label class="hamburger" (click)="toggleMenu()">
+        <span></span>
+        <span></span>
+        <span></span>
+    </label>
+
+    <ul class="nav-links" [class.active]="isMenuOpen">
+        <li><a routerLink="/login">Login</a></li>
+        <li><a routerLink="/farmerregister">Register</a></li>
+        <li><a routerLink="/farmerregister" class="start-btn">Start Bidding</a></li>
+    </ul>
+
+</nav>
+
+
+
 
 <body>
-    <div class="landing-container">
+    <div class="landing-container ">
         <!-- Water drops on the plant -->
         <div class="plant-drops">
             <span></span>
@@ -38,7 +33,7 @@
         </div>
 
         <!-- Main content -->
-        <div class="landing-content">
+        <div class="landing-content mt-3">
             <span>Farmer Bidding System</span>
             <h1>Smart Agriculture & Crop Trading</h1>
             <p>
@@ -133,3 +128,87 @@
         </div>
     </div>
 </section>
+
+
+<footer class="footer">
+    <footer class="footer">
+        <div class="footer-container">
+
+            <!-- Platform Info -->
+            <div class="footer-box">
+                <h3>🌾 Farmer Bidding Platform</h3>
+                <p>
+                    A transparent online bidding system that connects farmers directly
+                    with buyers for fair crop prices.
+                </p>
+
+                <!-- Social Media Icons -->
+                <div class="social-icons">
+                    <i class="fa-brands fa-instagram"></i>
+                    <i class="fa-brands fa-facebook"></i>
+                    <i class="fa-brands fa-x-twitter"></i>
+                    <i class="fa-brands fa-youtube"></i>
+                    <i class="fa-brands fa-square-whatsapp"></i>
+                </div>
+            </div>
+
+            <!-- Quick Links -->
+            <div class="footer-box">
+                <h4>Quick Links</h4>
+                <ul>
+                    <li><a routerLink="/login">Login</a></li>
+                    <li><a routerLink="/farmerregister">Register</a></li>
+                    <li><a routerLink="/farmerregister">Start Bidding</a></li>
+                </ul>
+            </div>
+
+            <!-- Support -->
+            <div class="footer-box">
+                <h4>Support</h4>
+                <p>📞 Helpline: +91 9XXXX </p>
+                <p>✉ support@farmerbidding.com</p>
+                <p>📍 India</p>
+            </div>
+
+            <div class="footer-box">
+                <h4>Contact Us</h4>
+
+                <form (submit)="submitForm($event)" novalidate>
+
+                    <!-- Name -->
+                    <div class="input-wrapper" [class.input-error]="submitted && !name">
+                        <input type="text" placeholder="Your Name" [(ngModel)]="name" name="name" />
+                    </div>
+                    <small class="error-text" *ngIf="submitted && !name">
+                        Name is required
+                    </small>
+
+                    <!-- Email -->
+                    <div class="input-wrapper" [class.input-error]="submitted && emailError">
+                        <input type="email" placeholder="Email" [(ngModel)]="email" name="email" />
+                    </div>
+                    <small class="error-text" *ngIf="submitted && emailError">
+                        Enter a valid email address
+                    </small>
+
+                    <!-- Message -->
+                    <div class="input-wrapper" [class.input-error]="submitted && messageError">
+                        <textarea placeholder="Message" [(ngModel)]="message" name="message"></textarea>
+                    </div>
+                    <small class="error-text" *ngIf="submitted && messageError">
+                        Message must be at least 10 characters
+                    </small>
+
+                    <button type="submit">Send</button>
+
+                </form>
+            </div>
+
+        </div>
+        <div class="footer-bottom">
+            © 2025 Farmer Bidding Platform | College Project
+            <br>
+            <span>Transparency • Fair Pricing • Farmer Empowerment</span>
+        </div>
+    </footer>
+</footer>

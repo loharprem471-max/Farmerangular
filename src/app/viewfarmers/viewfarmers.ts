@@ -24,7 +24,7 @@ export class Viewfarmers implements OnInit {
 
   getfarmers() {
     this.load=true
-    this.webclient.getdata('/farmer-list').subscribe({
+    this.webclient.getdata('/farmer-list/').subscribe({
       next: (data: any) => {
         this.farmers.set(data);
         console.log(data);

@@ -22,7 +22,7 @@ export class Customeraccount implements OnInit {
 
   private webclient = inject(WebClientService)
 
-  cid = localStorage.getItem('cid')
+  cid = localStorage.getItem('id')
   getcutomerdata() {
     this.webclient.getdata(`/get-customer/${this.cid}`).subscribe({
       next: (data: any) => {

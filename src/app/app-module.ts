@@ -52,6 +52,8 @@ import { JunctionfilterPipe } from './pipes/junctionfilter-pipe';
 import { ProductfilterPipe } from './product/productfilter-pipe';
 import { Customerfooter } from './customerfooter/customerfooter';
 import { CustomerfilterPipe } from './pipes/customerfilter-pipe';
+import { Farmerjunction } from './farmerjunction/farmerjunction';
+import { Junctiondetail } from './junctiondetail/junctiondetail';
 
 @NgModule({
   declarations: [
@@ -103,6 +105,8 @@ import { CustomerfilterPipe } from './pipes/customerfilter-pipe';
     ProductfilterPipe,
     Customerfooter,
     CustomerfilterPipe,
+    Farmerjunction,
+    Junctiondetail,
 
 
   ],

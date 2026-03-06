@@ -1,8 +1,9 @@
 <app-customer-navbar></app-customer-navbar>
 
-<div class="product-container">
+<div class="product-container" *ngFor="let product of bidding">
 
-  <div class="product-card" *ngFor="let product of bidding" (click)="placeBid(product.productId,product.bid)">
+  <div class="product-card" (click)="placeBid(product.productId,product.bid)"
+    *ngIf="product.status===1 && product!=null;else onempty">
 
     <!-- LEFT IMAGE -->
     <div class="product-image">
@@ -29,9 +30,12 @@
 
 </div>
 
-<ng-template #notbiddingproduct>
-  not products
+
+<ng-template #onempty>
+  <div class="no-data-card">
+    <h2>No Products Available for Bidding</h2>
+    <p>Currently there are no active products open for bidding.</p>
+  </div>
+
 </ng-template>
-
-
 <app-customerfooter></app-customerfooter>

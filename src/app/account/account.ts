@@ -26,7 +26,7 @@ export class Account implements OnInit {
   private webclient = inject(WebClientService);
   private router = inject(Router)
 
-  fid =Number(localStorage.getItem('id'))
+  fid = Number(localStorage.getItem('id'))
   getdetails() {
     this.loading = false
     this.webclient.getdata(`/farmer-getbyid/${this.fid}`).subscribe({
@@ -110,6 +110,15 @@ export class Account implements OnInit {
 
   }
   deleteAccount() {
-
+    let fid = Number(localStorage.getItem("id"))
+    this.webclient.deletedata(`farmer/${fid}`).subscribe({
+      next: (data) => {
+        alert("shour you want to delete account...........?")
+        this.router.navigate(["/startfarmer"])
+      },
+      error(err) {
+        alert("please try later.......")
+      },
+    })
   }
 }

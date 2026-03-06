@@ -3,7 +3,7 @@
 
 <div class="history-container">
 
-    <div class="history-card">
+    <div class="history-card" *ngIf=" history ; else noHistory">
 
         <!-- ================= TOP : PRODUCT DETAILS ================= -->
         <div class="product-section">
@@ -43,6 +43,13 @@
     </div>
 
 </div>
+
+<ng-template #noHistory>
+    <div class="no-history-card">
+        <h2>No Purchase History</h2>
+        <p>This customer has not placed any bids yet.</p>
+    </div>
+</ng-template>
 
 
 <app-customerfooter></app-customerfooter>

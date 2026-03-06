@@ -1,12 +1,12 @@
 <app-farmer-navbar></app-farmer-navbar>
 
-<div class="history-container">
+<div class="history-container" *ngFor="let history of farmerHistoryList">
 
-    <div class="history-card" *ngFor="let history of farmerHistoryList" n (click)="producthistory(history.pid)">
-
+    <div class="history-card" (click)="producthistory(history.pid)" *ngIf="history.status===0">
+        <ng-container *ngIf="history!=null; else onempty"></ng-container>
         <!-- LEFT SIDE - IMAGE -->
         <!-- <div  *ngIf="history.status === 0"> -->
-        @if (history.status==0) {
+        <!-- @if (history.status==0) { -->
         <div class="history-image">
             <img [src]="history.imgname1" alt="Product Image">
         </div>
@@ -22,10 +22,16 @@
             <p class="price">₹ {{ history.price }}</p>
             <p class="date">{{ history.datetime }}</p>
         </div>
-        }
+        <!-- } -->
     </div>
     <!-- </div> -->
 
 </div>
 
+<ng-template #onempty>
+    <div class="no-data-card" >
+        <h2>No Bidding History</h2>
+        <p>This farmer has not received any bids yet.</p>
+    </div>
+</ng-template>
 <app-footer></app-footer>

@@ -22,7 +22,7 @@ export class Farmerbidrequest implements OnInit {
   private router = inject(Router)
 
   getproductlist() {
-    let fid = sessionStorage.getItem('id')
+    let fid = Number(localStorage.getItem("id"))
     this.webclient.getdataSingalid(`/getfarmer-product/${fid}`).subscribe({
       next: (data) => {
         this.productlist = data;

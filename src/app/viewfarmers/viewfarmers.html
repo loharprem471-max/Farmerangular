@@ -78,3 +78,8 @@
 <!-- <div class="loaderclass" *ngIf="!load">
   <app-loader></app-loader>
 </div> -->
+
+    <div class="no-data-card" *ngIf="farmers()?.length===0">
+        <h2>No Active Farmers</h2>
+        <p>There are currently no active farmers available.</p>
+    </div>

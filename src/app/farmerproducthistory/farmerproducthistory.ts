@@ -23,8 +23,8 @@ export class Farmerproducthistory implements OnInit {
   private router = inject(Router);
 
   getproducthistory() {
-    let pid = sessionStorage.getItem('pid');
-    this.wbclient.getdataSingalid(`/getfarmer-producthistory/${90}`).subscribe({
+    let pid = Number(sessionStorage.getItem('pid'));
+    this.wbclient.getdataSingalid(`/getfarmer-producthistory/${pid}`).subscribe({
       next: (data: any) => {
         console.log(data);
         this.history = data;

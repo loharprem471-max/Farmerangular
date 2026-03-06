@@ -3,6 +3,7 @@
     margin: 20px auto;
 }
 
+/* CARD */
 .history-card {
     display: flex;
     align-items: center;
@@ -39,11 +40,13 @@
     margin: 0;
     color: #1b5e20;
     font-size: 18px;
+    font-weight: 600;
 }
 
 .history-details p {
     margin: 5px 0 0;
     color: #444;
+    font-size: 14px;
 }
 
 /* RIGHT SIDE */
@@ -64,6 +67,7 @@
     margin-top: 5px;
 }
 
+/* RESPONSIVE */
 @media (max-width: 768px) {
 
     .history-card {
@@ -87,18 +91,85 @@
 
 }
 
-.no-history-card {
+/* EMPTY HISTORY */
+.no-data-card {
+    width: 100%;
+    padding: 50px;
     text-align: center;
-    padding: 40px;
-    border-radius: 10px;
-    background-color: #f5f5f5;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    border-radius: 12px;
+    background-color: #f8f9fa;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    margin-top: 20px;
 }
 
-.no-history-card h2 {
-    color: #888;
+.no-data-card h2 {
+    color: #777;
+    margin-bottom: 10px;
 }
 
-.no-history-card p {
+.no-data-card p {
     color: #555;
+    font-size: 14px;
+}
+
+
+/* RIGHT SIDE */
+.history-info {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: flex-end;
+    height: 100%;
+}
+
+/* Group price & date */
+.info-top {
+    text-align: right;
+}
+
+.price {
+    font-weight: bold;
+    color: #2e7d32;
+    font-size: 18px;
+    margin: 0;
+}
+
+.date {
+    font-size: 13px;
+    color: #666;
+    margin-top: 4px;
+}
+
+/* DELETE BUTTON */
+.delete-btn {
+    margin-top: 10px;
+    padding: 8px 18px;
+    /* Increased horizontal padding */
+    min-width: 110px;
+    /* Fixed minimum width */
+    background-color: #ffebee;
+    color: #c62828;
+    border: 1px solid #ef9a9a;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: 0.3s ease;
+}
+
+.delete-btn:hover {
+    background-color: #c62828;
+    color: #fff;
+}
+
+/* RESPONSIVE FIX */
+@media (max-width: 768px) {
+
+    .history-info {
+        align-items: flex-start;
+        margin-top: 10px;
+    }
+
+    .info-top {
+        text-align: left;
+    }
 }

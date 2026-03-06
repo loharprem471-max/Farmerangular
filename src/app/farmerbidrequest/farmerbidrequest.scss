@@ -1,71 +1,319 @@
-.chat-container {
-    width: 100%;
-    background-color: #ffffff;
-    padding: 0;
+// .chat-container {
+//     width: 100%;
+//     background-color: #ffffff;
+//     padding: 0;
+// }
+
+// .chat-card {
+//     display: flex;
+//     padding: 12px 15px;
+//     border-bottom: 1px solid #e0e0e0;
+//     cursor: pointer;
+//     transition: background 0.2s ease;
+// }
+
+// .chat-card:hover {
+//     background-color: #f5f5f5;
+// }
+
+// .chat-image img {
+//     width: 55px;
+//     height: 55px;
+//     border-radius: 50%;
+//     object-fit: cover;
+// }
+
+// .chat-content {
+//     flex: 1;
+//     margin-left: 15px;
+// }
+
+// .chat-top {
+//     display: flex;
+//     justify-content: space-between;
+//     align-items: center;
+// }
+
+// .chat-top h3 {
+//     margin: 0;
+//     font-size: 17px;
+//     font-weight: 600;
+//     color: #111;
+// }
+
+// .chat-time {
+//     font-size: 13px;
+//     color: gray;
+// }
+
+// .chat-bottom {
+//     display: flex;
+//     justify-content: space-between;
+//     align-items: center;
+//     margin-top: 5px;
+// }
+
+// .chat-message {
+//     margin: 0;
+//     font-size: 14px;
+//     color: #666;
+//     white-space: nowrap;
+//     overflow: hidden;
+//     text-overflow: ellipsis;
+//     max-width: 70%;
+// }
+
+// .chat-price {
+//     font-size: 14px;
+//     font-weight: 600;
+//     color: #1b5e20;
+//     /* farmer green */
+// }
+
+
+
+
+
+
+
+
+
+// /* ===== FLOATING ENTRANCE ANIMATION ===== */
+// .fancy-card {
+//     position: relative;
+//     overflow: hidden;
+//     border-radius: 16px;
+//     animation: floatIn 0.8s cubic-bezier(.17, .67, .83, .67) forwards;
+//     opacity: 0;
+//     transform: translateY(40px) scale(0.95);
+// }
+
+// /* Stagger effect */
+// .fancy-card:nth-child(1) {
+//     animation-delay: 0.1s;
+// }
+
+// .fancy-card:nth-child(2) {
+//     animation-delay: 0.2s;
+// }
+
+// .fancy-card:nth-child(3) {
+//     animation-delay: 0.3s;
+// }
+
+// .fancy-card:nth-child(4) {
+//     animation-delay: 0.4s;
+// }
+
+// @keyframes floatIn {
+//     0% {
+//         opacity: 0;
+//         transform: translateY(40px) scale(0.95);
+//     }
+
+//     60% {
+//         opacity: 1;
+//         transform: translateY(-8px) scale(1.02);
+//     }
+
+//     100% {
+//         opacity: 1;
+//         transform: translateY(0) scale(1);
+//     }
+// }
+
+// /* ===== GLOWING GRADIENT BORDER ===== */
+// .fancy-card::before {
+//     content: "";
+//     position: absolute;
+//     inset: -2px;
+//     border-radius: 18px;
+//     background: linear-gradient(45deg, #00f5ff, #00ff95, #00f5ff);
+//     background-size: 300% 300%;
+//     animation: gradientMove 4s ease infinite;
+//     z-index: -1;
+// }
+
+// @keyframes gradientMove {
+//     0% {
+//         background-position: 0% 50%;
+//     }
+
+//     50% {
+//         background-position: 100% 50%;
+//     }
+
+//     100% {
+//         background-position: 0% 50%;
+//     }
+// }
+
+// /* ===== HOVER LIFT EFFECT ===== */
+// .fancy-card:hover {
+//     transform: translateY(-10px) scale(1.03);
+//     transition: 0.4s ease;
+//     box-shadow: 0 20px 40px rgba(0, 255, 150, 0.3);
+// }
+
+// /* ===== IMAGE FLOAT EFFECT ===== */
+// .chat-image img {
+//     transition: transform 0.4s ease;
+// }
+
+// .fancy-card:hover .chat-image img {
+//     transform: scale(1.1) rotate(3deg);
+// }
+
+// /* ===== NO PRODUCT CARD ANIMATION ===== */
+// .no-product-card {
+//     text-align: center;
+//     padding: 50px;
+//     border-radius: 16px;
+//     background: linear-gradient(135deg, #f5f7fa, #e4ecf5);
+//     animation: pulseFloat 2s ease-in-out infinite;
+// }
+
+// @keyframes pulseFloat {
+//     0% {
+//         transform: translateY(0);
+//     }
+
+//     50% {
+//         transform: translateY(-8px);
+//     }
+
+//     100% {
+//         transform: translateY(0);
+//     }
+// }
+
+
+
+
+
+
+/* Container */
+.product-container {
+    width: 95%;
+    margin: 20px auto;
 }
 
-.chat-card {
+/* Card */
+.product-card {
     display: flex;
-    padding: 12px 15px;
-    border-bottom: 1px solid #e0e0e0;
-    cursor: pointer;
-    transition: background 0.2s ease;
+    align-items: center;
+    justify-content: space-between;
+    background-color: #eaf4ea;
+    border-left: 6px solid #2e7d32;
+    border-radius: 14px;
+    padding: 20px;
+    margin-bottom: 20px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+    transition: all 0.3s ease;
 }
 
-.chat-card:hover {
-    background-color: #f5f5f5;
+.product-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08);
 }
 
-.chat-image img {
-    width: 55px;
-    height: 55px;
+/* Image Section */
+.product-image img {
+    width: 95px;
+    height: 95px;
     border-radius: 50%;
     object-fit: cover;
+    border: 3px solid #2e7d32;
 }
 
-.chat-content {
+/* Content Section */
+.product-content {
     flex: 1;
-    margin-left: 15px;
+    padding: 0 20px;
 }
 
-.chat-top {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
-.chat-top h3 {
+.product-name {
     margin: 0;
-    font-size: 17px;
-    font-weight: 600;
-    color: #111;
-}
-
-.chat-time {
-    font-size: 13px;
-    color: gray;
-}
-
-.chat-bottom {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-top: 5px;
-}
-
-.chat-message {
-    margin: 0;
-    font-size: 14px;
-    color: #666;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    max-width: 70%;
-}
-
-.chat-price {
-    font-size: 14px;
+    font-size: 22px;
     font-weight: 600;
     color: #1b5e20;
-    /* farmer green */
+}
+
+.product-desc {
+    margin-top: 6px;
+    font-size: 15px;
+    color: #2e7d32;
+    line-height: 1.5;
+}
+
+/* Right Section */
+.product-right {
+    text-align: right;
+    min-width: 120px;
+}
+
+.product-price {
+    margin: 0;
+    font-size: 22px;
+    font-weight: 700;
+    color: #1b5e20;
+}
+
+.product-date {
+    margin-top: 8px;
+    font-size: 14px;
+    color: #5f6f65;
+}
+
+/* ============================= */
+/* Responsive Design */
+/* ============================= */
+
+@media (max-width: 768px) {
+
+    .product-card {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 15px;
+    }
+
+    .product-content {
+        padding: 0;
+    }
+
+    .product-right {
+        text-align: left;
+        width: 100%;
+    }
+
+    .product-price {
+        font-size: 20px;
+    }
+
+    .product-image img {
+        width: 80px;
+        height: 80px;
+    }
+}
+
+
+//pending nulll
+.no-data-card {
+    width: 100%;
+    padding: 50px;
+    text-align: center;
+    border-radius: 12px;
+    background-color: #f8f9fa;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    margin-top: 20px;
+}
+
+.no-data-card h2 {
+    color: #777;
+    margin-bottom: 10px;
+}
+
+.no-data-card p {
+    color: #555;
+    font-size: 14px;
 }

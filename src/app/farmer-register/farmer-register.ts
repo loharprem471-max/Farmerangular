@@ -2,7 +2,6 @@ import { Component, inject, OnInit } from '@angular/core';
 import { NgForm, NgModel } from '@angular/forms';
 import { Farmer } from '../entities/Farmer';
 
-
 import { WebClientService } from '../../web-client-service';
 import { Router } from '@angular/router';
 
@@ -13,7 +12,6 @@ import { Router } from '@angular/router';
   styleUrl: './farmer-register.scss',
 })
 export class FarmerRegister {
-
   faremer = new Farmer();
 
   showPassword = false;
@@ -27,7 +25,7 @@ export class FarmerRegister {
   aadharFrontPreview: any = null;
   aadharBackPreview: any = null;
 
-  constructor(private router: Router,) { }
+  constructor(private router: Router) { }
   private webclient = inject(WebClientService);
 
   togglePassword() {
@@ -49,7 +47,6 @@ export class FarmerRegister {
     }
   }
 
-
   onNameStateCityInput(event: any, field: 'username' | 'state' | 'city') {
     const value = event.target.value;
     const sanitized = value.replace(/[^a-zA-Z ]/g, '');
@@ -66,12 +63,7 @@ export class FarmerRegister {
   }
 
   onSubmit(form: NgForm) {
-
-    if (
-      form.invalid ||
-      !this.farmerAdhar ||
-      !this.farmerAdharback
-    ) {
+    if (form.invalid || !this.farmerAdhar || !this.farmerAdharback) {
       Object.values(form.controls).forEach((control: any) => {
         (control as NgModel).control?.markAsTouched();
       });
@@ -79,11 +71,7 @@ export class FarmerRegister {
       return;
     }
 
-
-
-
-    if (this.faremer.role === "farmer") {
-
+    if (this.faremer.role === 'farmer') {
       const farmerdata = new FormData();
       farmerdata.append('username', this.faremer.username);
       farmerdata.append('address', this.faremer.address);
@@ -91,26 +79,26 @@ export class FarmerRegister {
       farmerdata.append('password', this.faremer.password);
       farmerdata.append('phoneno', this.faremer.phoneno);
       farmerdata.append('state', this.faremer.state);
-      farmerdata.append('status', this.faremer.status.toString());
+      farmerdata.append('city', this.faremer.city);
       farmerdata.append('farmerAdhar', this.farmerAdhar);
       farmerdata.append('farmerAdharback', this.farmerAdharback);
 
-      this.webclient.postdata('/farmer-register', farmerdata)
-        .subscribe({
-          next: (data: any) => {
-            console.log(farmerdata);
-            console.log(data)
-            alert(data.username + 'you are Registered Successfully. Admin verification within 24 hours.');
-            this.router.navigateByUrl("/startfarmer");
-          },
-          error(err) {
-            alert("Internal Server Error Please Fill Form Again")
-          },
-        });
+      this.webclient.postdata('/farmer-register', farmerdata).subscribe({
+        next: (data: any) => {
+          console.log(farmerdata);
+          console.log(data);
+          alert(
+            data.username + 'you are Registered Successfully. Admin verification within 24 hours.',
+          );
+          this.router.navigateByUrl('/startfarmer');
+        },
+        error(_err) {
+          alert('Internal Server Error Please Fill Form Again');
+        },
+      });
     }
 
-    if (this.faremer.role === "customer") {
-
+    if (this.faremer.role === 'customer') {
       const farmerdata = new FormData();
       farmerdata.append('username', this.faremer.username);
       farmerdata.append('address', this.faremer.address);
@@ -118,28 +106,26 @@ export class FarmerRegister {
       farmerdata.append('password', this.faremer.password);
       farmerdata.append('phoneno', this.faremer.phoneno);
       farmerdata.append('state', this.faremer.state);
-      farmerdata.append('status', this.faremer.status.toString());
+      farmerdata.append('city', this.faremer.city);
 
       this.customerAdhar = this.farmerAdhar;
       this.customerAdharback = this.farmerAdharback;
-      farmerdata.append("customerAdhar", this.customerAdhar)
-      farmerdata.append("customerAdharback", this.customerAdharback)
+      farmerdata.append('customerAdhar', this.customerAdhar);
+      farmerdata.append('customerAdharback', this.customerAdharback);
 
-      console.log(this.customerAdhar)
-      console.log(this.customerAdharback)
-      this.webclient.postdata('/customer-register', farmerdata)
-        .subscribe({
-          next: (data: any) => {
-            console.log(farmerdata);
-            console.log(data)
-            alert(data.username + 'you are Registered Successfully. Admin verification within 24 hours.');
-            this.router.navigateByUrl("/startfarmer");
-          },
-          error(_err) {
-            alert("Internal Server Error Please Fill Form Again")
-          },
-        });
+      this.webclient.postdata('/customer-register', farmerdata).subscribe({
+        next: (data: any) => {
+          console.log(farmerdata);
+          console.log(data);
+          alert(
+            data.username + 'you are Registered Successfully. Admin verification within 24 hours.',
+          );
+          this.router.navigateByUrl('/startfarmer');
+        },
+        error(_err) {
+          alert('Internal Server Error Please Fill Form Again');
+        },
+      });
     }
   }
-
 }

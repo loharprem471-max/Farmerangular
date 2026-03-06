@@ -39,224 +39,231 @@ import { Customerhistory } from './customerhistory/customerhistory';
 import { Customerproducthistory } from './customerproducthistory/customerproducthistory';
 import { Biddingproducts } from './biddingproducts/biddingproducts';
 import { FirstbidValue } from './firstbid-value/firstbid-value';
+import { Farmerjunction } from './farmerjunction/farmerjunction';
+import { Junctiondetail } from './junctiondetail/junctiondetail';
 const routes: Routes = [
-
   {
-    path: "faremrnavbar",
+    path: 'faremrnavbar',
     component: FarmerNavbar,
-    canActivate: [farmerguardGuard]
+    canActivate: [farmerguardGuard],
   },
   {
-    path: "login",
+    path: 'login',
     component: Loginpage,
   },
   {
-    path: "customernavbar",
+    path: 'customernavbar',
     component: CustomerNavbar,
-    canActivate: [farmerguardGuard]
+    canActivate: [farmerguardGuard],
   },
   {
-    path: "farmerhomepage",
+    path: 'farmerhomepage',
     component: FarmerHomepage,
-    canActivate: [farmerguardGuard]
+    canActivate: [farmerguardGuard],
   },
   {
-    path: "customerhomepage",
+    path: 'customerhomepage',
     component: CustomerHomepage,
-    canActivate: [farmerguardGuard]
+    canActivate: [farmerguardGuard],
   },
   {
-    path: "aboutus",
+    path: 'aboutus',
     component: Aboutus,
-    canActivate: [farmerguardGuard]
+    canActivate: [farmerguardGuard],
   },
   {
-    path: "farmerregister",
+    path: 'farmerregister',
     component: FarmerRegister,
   },
   {
-    path: "startfarmer",
+    path: 'startfarmer',
     component: Startfarmer,
   },
   {
-    path: "viewfarmers",
+    path: '',
+    component: Startfarmer,
+  },
+  {
+    path: 'viewfarmers',
     component: Viewfarmers,
-    canActivate: [farmerguardGuard]
+    canActivate: [farmerguardGuard],
   },
   {
-    path: "viewcustomer",
+    path: 'viewcustomer',
     component: Viewcustomers,
-    canActivate: [farmerguardGuard]
+    canActivate: [farmerguardGuard],
   },
   {
-    path: "testing",
+    path: 'testing',
     component: Testing,
-    canActivate: [farmerguardGuard]
+    canActivate: [farmerguardGuard],
   },
 
   {
-    path: "product",
+    path: 'product',
     component: Product,
-    canActivate: [farmerguardGuard]
+    canActivate: [farmerguardGuard],
   },
 
   {
-    path: "adminlgoin",
+    path: 'adminlgoin',
     component: Adminlogin,
-
   },
 
   {
-    path: "account",
+    path: 'account',
     component: Account,
-    canActivate: [farmerguardGuard]
-
+    canActivate: [farmerguardGuard],
   },
 
   {
-    path: "addjunction",
+    path: 'addjunction',
     component: Addjunction,
-    canActivate: [farmerguardGuard]
-
+    canActivate: [farmerguardGuard],
   },
   {
-    path: "customeraccount",
+    path: 'customeraccount',
     component: Customeraccount,
-    canActivate: [farmerguardGuard]
-
+    canActivate: [farmerguardGuard],
   },
   {
-    path: "rentjunction",
+    path: 'rentjunction',
     component: Rentjunction,
-    canActivate: [farmerguardGuard]
-
+    canActivate: [farmerguardGuard],
   },
 
   {
     path: 'addwaste',
-    component: Wasteadd
+    component: Wasteadd,
   },
 
   {
     path: 'customerabout',
-    component: Customerabout
+    component: Customerabout,
   },
 
   {
     path: 'verifyemail',
-    component: Verifyemail
+    component: Verifyemail,
   },
 
   {
     path: 'optverify',
-    component: Otpverify
+    component: Otpverify,
   },
 
   {
     path: 'changepassword',
-    component: Changepassword
+    component: Changepassword,
   },
 
   {
     path: 'pendingbid',
-    component: Cutomerpendingbid
+    component: Cutomerpendingbid,
   },
 
   {
     path: 'BidValue',
-    component: BidValue
+    component: BidValue,
   },
 
   {
     path: 'farmerbiddingrequest',
-    component: Farmerbidrequest
+    component: Farmerbidrequest,
   },
 
   {
-    path: "biddingend",
-    component: Biddingend
+    path: 'biddingend',
+    component: Biddingend,
   },
 
   {
-    path: "farmerhistory",
-    component: Farmerhistory
+    path: 'farmerhistory',
+    component: Farmerhistory,
   },
 
   {
-    path: "farmerproducthistory",
-    component: Farmerproducthistory
+    path: 'farmerproducthistory',
+    component: Farmerproducthistory,
   },
   {
     path: 'customerhistory',
-    component: Customerhistory
+    component: Customerhistory,
   },
 
   {
-    path: "customerprohistory",
-    component: Customerproducthistory
+    path: 'customerprohistory',
+    component: Customerproducthistory,
   },
 
   {
-    path: "biddingproduct",
-    component: Biddingproducts
+    path: 'biddingproduct',
+    component: Biddingproducts,
   },
 
   {
-    path: "firstbidvalue",
-    component: FirstbidValue
+    path: 'firstbidvalue',
+    component: FirstbidValue,
+  },
+
+
+  {
+    path: "junctionrequest",
+    component: Farmerjunction
+  },
+
+  {
+    path: "junctiondetail",
+    component: Junctiondetail
   },
   {
-    path: "admin",
+    path: 'admin',
     component: Layout,
     // canActivate: [farmerguardGuard],
     children: [
-
       {
-        path: "dashboard",
+        path: 'dashboard',
         component: Dashboard,
       },
       {
-        path: "",
+        path: '',
         component: Dashboard,
-
       },
       {
-        path: "viewfarmers",
-        component: Viewfarmers
+        path: 'viewfarmers',
+        component: Viewfarmers,
       },
       {
-        path: "viewcustomer",
-        component: Viewcustomers
+        path: 'viewcustomer',
+        component: Viewcustomers,
       },
       {
-        path: "newuser",
+        path: 'newuser',
         component: Newusers,
       },
       {
-        path: "newcustomers",
-        component: Newcustomers
+        path: 'newcustomers',
+        component: Newcustomers,
       },
       {
-        path: "viewproduct",
-        component: Viewproduct
+        path: 'viewproduct',
+        component: Viewproduct,
       },
       {
-        path: "message",
-        component: Messages
-      }
-    ]
+        path: 'message',
+        component: Messages,
+      },
+    ],
   },
 
   {
-    path: "admin",
-    loadChildren: () => import('./layout/layout').then(m => m.Layout)
+    path: 'admin',
+    loadChildren: () => import('./layout/layout').then((m) => m.Layout),
   },
-
-
 ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
 export class AppRoutingModule { }

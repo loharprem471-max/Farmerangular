@@ -1,0 +1,61 @@
+<app-farmer-navbar></app-farmer-navbar>
+
+
+<div class="junction-container">
+
+    <div class="junction-card" *ngFor="let j of junctionList">
+
+        <!-- 🔹 TOP SECTION -->
+        <div class="junction-top">
+
+            <!-- LEFT : Junction Image -->
+            <div class="junction-image">
+                <img [src]="j.img1" alt="Junction Image">
+            </div>
+
+            <!-- RIGHT : Junction Info -->
+            <div class="junction-info">
+                <h2 class="junc-title">{{ j.juncname }}</h2>
+                <p><strong>Cost:</strong> ₹ {{ j.cost }}</p>
+                <p><strong>Phone:</strong> {{ j.phoneno }}</p>
+                <p><strong>Address:</strong> {{ j.address }}</p>
+                <p><strong>Description:</strong> {{ j.description }}</p>
+                <!-- <p class="date">{{ j.datetime | date:'yyyy-MM-dd hh:mm a' }}</p> -->
+            </div>
+
+        </div>
+
+        <!-- 🔹 FARMER SECTION -->
+        <div class="farmer-section">
+
+            <!-- Farmer Image -->
+            <div class="farmer-image">
+                <img [src]="j.farmerimage" alt="Farmer Image">
+            </div>
+
+            <!-- Farmer Info -->
+            <div class="farmer-info">
+                <h3>{{ j.farmername }}</h3>
+                <p>{{ j.city }}, {{ j.state }}</p>
+            </div>
+
+        </div>
+
+        <!-- 🔹 BUTTON SECTION -->
+        <div class="button-section">
+            <button class="stop-btn" (click)="stopJunction(j.jid)">
+                Stop Junction Rent
+            </button>
+        </div>
+
+    </div>
+
+</div>
+
+
+
+
+
+
+
+<app-footer></app-footer>

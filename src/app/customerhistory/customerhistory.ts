@@ -21,8 +21,8 @@ export class Customerhistory implements OnInit {
   private router = inject(Router);
 
   gethistory() {
-    sessionStorage.getItem('cid');
-    this.webclient.getdataSingalid(`/getcustomer-history/${26}`).subscribe({
+    let cid=Number(localStorage.getItem("id"))
+    this.webclient.getdataSingalid(`/getcustomer-history/${cid}`).subscribe({
       next: (data) => {
         console.log(data);
         this.customerhistorylist = data;

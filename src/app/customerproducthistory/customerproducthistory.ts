@@ -18,20 +18,21 @@ export class Customerproducthistory implements OnInit {
   }
 
 
-  history=new Bidding();
+  history = new Bidding();
 
-  private webclient=inject(WebClientService);
-  private router=inject(Router)
+  private webclient = inject(WebClientService);
+  private router = inject(Router)
 
-  getproducthistory()
-  {
-    this.webclient.getdataSingalid(`/getcustomer-producthistory/${90}`).subscribe({next:(data)=>{
-      this.history=data;
-    },
-    error(err) {
-      alert("Not Product History...........")
-    },
-  })
+  getproducthistory() {
+    let pid = Number(sessionStorage.getItem("pid"))
+    this.webclient.getdataSingalid(`/getcustomer-producthistory/${pid}`).subscribe({
+      next: (data) => {
+        this.history = data;
+      },
+      error(err) {
+        alert("Not Product History...........")
+      },
+    })
   }
 
 }

@@ -39,7 +39,7 @@ export class Biddingend implements OnInit {
     this.webclient.getdataSingalid(`/endbidding-process/${bid}`).subscribe({
       next: (data) => {
         alert(`your accepted the ${name} now check on email sended the bid confirmation ..........`)
-        this.router.navigate(['/farmerbidrequest'])
+        this.router.navigate(['/farmerbiddingrequest'])
       },
       error(err) {
         alert("Oops please try again .........")
@@ -52,6 +52,7 @@ export class Biddingend implements OnInit {
     this.webclient.deletedata(`/rejectbid-value/${bid}`).subscribe({
       next: (data: any) => {
         console.log(data)
+        console.log(bid)
         alert(`your are rejected customer ${name} bid request.........`)
         this.getbiddingValue()
 

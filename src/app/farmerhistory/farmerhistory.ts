@@ -21,7 +21,7 @@ export class Farmerhistory implements OnInit {
   private router = inject(Router)
 
   gethistory() {
-    let fid = localStorage.getItem("fid")
+    let fid = localStorage.getItem("id")
     this.webclient.getdataSingalid(`/getfarmer-history/${fid}`).subscribe({
       next: (data) => {
         this.farmerHistoryList = data;

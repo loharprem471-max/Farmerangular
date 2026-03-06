@@ -21,8 +21,9 @@ export class Newusers implements OnInit {
   private webclient = inject(WebClientService);
 
   getfarmers() {
-    this.webclient.getdata('/farmer-list').subscribe({
+    this.webclient.getdata('/farmer-list/').subscribe({
       next: (data: any) => {
+        console.log(data)
         this.farmers.set(data);
       },
       error(err) {

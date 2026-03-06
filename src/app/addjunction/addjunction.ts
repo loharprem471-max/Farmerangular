@@ -79,12 +79,13 @@ export class Addjunction implements OnInit{
 
     const jundata = new FormData()
 
-    this.junction.farmerId =Number(localStorage.getItem("id"))
+    let fid =Number(localStorage.getItem("id"))
+    this.junction.farmerId=fid
     jundata.append('address', this.junction.address.trim());
     jundata.append('cost', this.junction.cost.toString().trim());
     jundata.append('description', this.junction.description.trim());
     jundata.append('juncname', this.junction.juncname.trim());
-    jundata.append('farmerId', this.junction.farmerId);
+    jundata.append('farmerId',this.junction.farmerId);
     jundata.append('img1', this.image1);
     jundata.append('img2', this.image2);
 

@@ -8,6 +8,7 @@
   </div>
 </div>
 @for (customer of customers |customerfilter:customer; track customer.cid) {
+<ng-container *ngIf="customers.length>0;else onempty"></ng-container>
 @if (customer.status===1) {
 <div class="farmer-card">
   <div class="card-info ">
@@ -27,7 +28,7 @@
         <div class="label">Phone:</div>
         <div class="value">{{ customer.phoneno }}</div>
       </div>
-            <div class="info-row">
+      <div class="info-row">
         <div class="label">State and City:</div>
         <div class="value">{{ customer.city }}, {{ customer.state }}</div>
       </div>
@@ -76,3 +77,12 @@
 <!-- <div class="loader" *ngIf="!loader">
   <app-loader></app-loader>
 </div> -->
+
+
+<ng-template #onempty>
+
+  <div class="no-data-card">
+    <h2>No Active Customers</h2>
+    <p>There are currently no active Customers available.</p>
+  </div>
+</ng-template>

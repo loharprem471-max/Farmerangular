@@ -9,66 +9,74 @@
   </div>
 </div>
 
-@for (customer of customers() |customerfilter:searchTerm; track customer.cid) {
+<ng-container *ngIf="customers.length>=0; else onempty">
+  @for (customer of customers() |customerfilter:searchTerm; track customer.cid) {
 
-@if (customer.status==0) {
-<div class="farmer-card">
-  <!-- Left: Customer Info -->
-  <div class="card-info">
-    <div class="card-header">
-      <h2>{{ customer.username }}</h2>
-      <span class="status" [class.active]="customer.status === 1">
-        {{ customer.status === 1 ? 'Active' : 'Inactive' }}
-      </span>
+  @if (customer.status==0) {
+  <div class="farmer-card">
+    <!-- Left: Customer Info -->
+    <div class="card-info">
+      <div class="card-header">
+        <h2>{{ customer.username }}</h2>
+        <span class="status" [class.active]="customer.status === 1">
+          {{ customer.status === 1 ? 'Active' : 'Inactive' }}
+        </span>
+      </div>
+
+      <div class="card-body">
+        <div class="info-row">
+          <div class="label">Email:</div>
+          <div class="value">{{ customer.email }}</div>
+        </div>
+        <div class="info-row">
+          <div class="label">Phone:</div>
+          <div class="value">{{ customer.phoneno }}</div>
+        </div>
+        <div class="info-row">
+          <div class="label">State and City:</div>
+          <div class="value">{{ customer.city }}, {{ customer.state }}</div>
+        </div>
+        <div class="info-row">
+          <div class="label">Address:</div>
+          <div class="value">{{ customer.address }}</div>
+        </div>
+        <div class="info-row">
+          <div class="label">Registered On:</div>
+          <div class="value">{{ customer.datetime | date:'medium' }}</div>
+        </div>
+
+        <!-- Single Full-width Unblock Button (Green) -->
+        <div class="card-buttons">
+          <button class="btn unblock full-width" (click)="approve(customer.cid,customer.username)">
+            <i class="fas fa-unlock"></i>
+            Approve to {{customer.username}}
+          </button>
+        </div>
+      </div>
     </div>
 
-    <div class="card-body">
-      <div class="info-row">
-        <div class="label">Email:</div>
-        <div class="value">{{ customer.email }}</div>
-      </div>
-      <div class="info-row">
-        <div class="label">Phone:</div>
-        <div class="value">{{ customer.phoneno }}</div>
-      </div>
-      <div class="info-row">
-        <div class="label">State and City:</div>
-        <div class="value">{{ customer.city }}, {{ customer.state }}</div>
-      </div>
-      <div class="info-row">
-        <div class="label">Address:</div>
-        <div class="value">{{ customer.address }}</div>
-      </div>
-      <div class="info-row">
-        <div class="label">Registered On:</div>
-        <div class="value">{{ customer.datetime | date:'medium' }}</div>
-      </div>
-
-      <!-- Single Full-width Unblock Button (Green) -->
-      <div class="card-buttons">
-        <button class="btn unblock full-width" (click)="approve(customer.cid,customer.username)">
-          <i class="fas fa-unlock"></i>
-          Approve to {{customer.username}}
-        </button>
-      </div>
+    <!-- Right: Images -->
+    <div class="card-images">
+      <img *ngIf="customer.customerAdhar" [src]="customer.customerAdhar" alt="Aadhar Front" loading="lazy"
+        (click)="openImage(customer.customerAdhar)">
+      <img *ngIf="customer.customerAdharback" [src]="customer.customerAdharback" alt="Aadhar Back" loading="lazy"
+        (click)="openImage(customer.customerAdharback)">
     </div>
   </div>
+  }
+  }
 
-  <!-- Right: Images -->
-  <div class="card-images">
-    <img *ngIf="customer.customerAdhar" [src]="customer.customerAdhar" alt="Aadhar Front" loading="lazy"
-      (click)="openImage(customer.customerAdhar)">
-    <img *ngIf="customer.customerAdharback" [src]="customer.customerAdharback" alt="Aadhar Back" loading="lazy"
-      (click)="openImage(customer.customerAdharback)">
+  <div class="image-modal" *ngIf="selectedImage">
+    <span class="close-btn" (click)="closeImage()">
+      <i class="fa-solid fa-xmark"></i>
+    </span>
+    <img [src]="selectedImage" class="modal-img">
   </div>
-</div>
-}
-}
+</ng-container>
 
-<div class="image-modal" *ngIf="selectedImage">
-  <span class="close-btn" (click)="closeImage()">
-    <i class="fa-solid fa-xmark"></i>
-  </span>
-  <img [src]="selectedImage" class="modal-img">
-</div>
-
+<ng-template #onempty>
+  <div class="no-data-card">
+    <h2>No Pending Customers</h2>
+    <p>There are no inactive customers waiting for approval.</p>
+  </div>
+</ng-template>

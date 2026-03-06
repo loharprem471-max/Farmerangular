@@ -14,6 +14,11 @@ export class Rentjunction implements OnInit {
   searchJunction = '';
   junction: Junction[] = [];
 
+  junctiondata = {
+    farmerId: '',
+    junctionid: '',
+  }
+
   webclient = inject(WebClientService);
 
   ngOnInit(): void {
@@ -35,11 +40,29 @@ export class Rentjunction implements OnInit {
 
 
 
-  rentNow(id: any) {
-    // this.webclient.postdata('/email-Sending', formdata).subscribe({
-    //   next: (data: any) => {
-    //     alert('success email');
-    //   },
-    // });
+  rentNow(jid: any) {
+    let fid = localStorage.getItem("id")
+    // if (fid != null) {
+    //   this.junctiondata.farmerId = fid;
+    //   this.junctiondata.junctionid = jid;
+    // }
+    // else {
+    //   alert("please Try again...")
+    // }
+
+    const junctiondata = new FormData();
+
+    if (fid != null) {
+      junctiondata.append('farmerId', fid)
+      junctiondata.append('jid', jid)
+    }
+    this.webclient.postdata('/rent-junction/', junctiondata).subscribe({
+      next: (data) => {
+        alert("Junction rented cheack the whats app for confirmation....")
+      },
+      error(err) {
+        alert("please try again.........")
+      },
+    })
   }
 }

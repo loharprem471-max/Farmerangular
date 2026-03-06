@@ -24,7 +24,8 @@ export class Cutomerpendingbid implements OnInit {
   private router=inject(Router)
 
   getproductdata() {
-    this.webclient.getdataSingalid(`/getcutomer-biddata/${26}`).subscribe({
+    let cid=Number(localStorage.getItem("id"))
+    this.webclient.getdataSingalid(`/getcutomer-biddata/${cid}`).subscribe({
       next: (data: any) => {
 
         console.log(data)

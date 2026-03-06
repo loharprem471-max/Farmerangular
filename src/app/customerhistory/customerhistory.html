@@ -1,8 +1,9 @@
 <app-customer-navbar></app-customer-navbar>
 
-<div class="history-container">
+<div class="history-container" *ngFor="let history of customerhistorylist;">
 
-    <div class="history-card" *ngFor="let history of customerhistorylist;"  (click)="producthistory(history.productId)">
+    <div class="history-card" *ngIf=" history!=null; else noHistory"
+        (click)="producthistory(history.productId)">
 
         <!-- LEFT SIDE - IMAGE -->
         <!-- <div  *ngIf="history.status === 0"> -->
@@ -28,5 +29,12 @@
 
 </div>
 
+
+<ng-template #noHistory>
+    <div class="no-history-card">
+        <h2>No Purchase History</h2>
+        <p>This customer has not placed any bids yet.</p>
+    </div>
+</ng-template>
 
 <app-customerfooter></app-customerfooter>

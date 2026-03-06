@@ -315,3 +315,26 @@
         width: 90px;
     }
 }
+
+
+
+//empty customercss
+.no-data-card {
+    width: 100%;
+    padding: 50px;
+    text-align: center;
+    border-radius: 12px;
+    background-color: #f8f9fa;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    margin-top: 20px;
+}
+
+.no-data-card h2 {
+    color: #777;
+    margin-bottom: 10px;
+}
+
+.no-data-card p {
+    color: #555;
+    font-size: 14px;
+}
