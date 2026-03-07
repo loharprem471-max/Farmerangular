@@ -12,7 +12,7 @@ export class WebClientService {
 
   private username: any;
   private password: any;
-  private readonly base_url = 'http://localhost:8080';
+  private readonly base_url = 'https://farmer-connect-production-springboot.up.railway.app';
 
   constructor(private http: HttpClient,) {
 
@@ -57,8 +57,7 @@ export class WebClientService {
     return localStorage.getItem('id');
   }
 
-  isAdminLogedIn()
-  {
+  isAdminLogedIn() {
     return localStorage.getItem("aid")
   }
 
